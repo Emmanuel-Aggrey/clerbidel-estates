@@ -9,7 +9,7 @@
   {% endblock title %}
 
   {% block body %}
-<h1>kasjhfksadjfbkjsdbgkj</h1>
+
 
   <!-- <div class="site-loader"></div> -->
   
@@ -194,13 +194,15 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
         <div class="row mb-5">
           {% for related_properties in related %}
             
-         
+          {% if related_properties.image %}
           <div class="col-md-6 col-lg-4 mb-4">
             <div class="property-entry h-100">
               <a href="{% url 'estate_app:detailpage' related_properties.slug %}" class="property-thumbnail">
                 <div class="offer-type-wrap">
                   <span class="property-specs"><h2 style="color: red;">For</h2> </span>
+                 
                   {% if related_properties.sale_type %}
+                  {% endif %}
                   <span class="offer-type bg-danger">{{related_properties.sale_type}}</span>
 
                   {% endif %}
@@ -210,18 +212,18 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
 
                 {% endif %}
               </a>
-              {% if  related_properties.image %}
-                
-            
               <div class="p-4 property-body">
+                {% if related_properties.image %}
                 <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
+                {% endif %}
                 {% if related_properties.name %}
                 <span class="property-specs">Name</span>
 
                 <h2 class="property-title"><a href="{% url 'estate_app:detailpage' related_properties.slug %}">{{related_properties.name}}</a></h2>
       
                 {% endif %}
-                         <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> location</span> <br>
+                
+                         <!-- <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> location</span> <br> -->
                          {% if related_properties.price %}
                          <strong class="property-price text-primary mb-3 d-block text-success"> GH₵:  {{related_properties.price}}</strong>
 
@@ -254,8 +256,6 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
                 </ul>
 
               </div>
-              {% endif %}
-              <!--  -->
             </div>
           </div>
           {% endfor %}
