@@ -1,0 +1,33 @@
+
+.newslatter-section .newslatter-text img {
+	margin-bottom: 25px;
+}
+
+.newslatter-section .newslatter-text h4 {
+	color: #fff;
+	font-size: 24px;
+	font-weight: 500;
+	line-height: 30px;
+	margin-bottom: 35px;
+}
+
+.newslatter-section .newslatter-text input {
+	width: 385px;
+	height: 51px;
+	border: none;
+	display: inline-block;
+	padding: 18px 10px 18px 20px;
+	font-size: 14px;
+	color: #6f6f8a;
+	font-weight: 300;
+	border-radius: 4px;
+	margin-right: 20px;
+}
+
+.newslatter-section .newslatter-text .site-btn.news-btn {
+	padding: 16px 38px;
+	border: none;
+	background: #8AD144;
+	color: #fff;
+	cursor: pointer;
+}
