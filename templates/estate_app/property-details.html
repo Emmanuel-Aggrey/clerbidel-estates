@@ -210,6 +210,9 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
 
                 {% endif %}
               </a>
+              {% if  related_properties.image %}
+                
+            
               <div class="p-4 property-body">
                 <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
                 {% if related_properties.name %}
@@ -251,6 +254,8 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
                 </ul>
 
               </div>
+              {% endif %}
+              <!--  -->
             </div>
           </div>
           {% endfor %}
