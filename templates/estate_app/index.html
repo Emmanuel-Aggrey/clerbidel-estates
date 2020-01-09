@@ -123,9 +123,9 @@ data-stellar-background-ratio="0.5">
 
 <div class="site-section">
   <div class="container">
-
+ 
     <div class="row justify-content-center">
-      <h3 style="background-color: dimgray; font-style: italic;" class="" id="example"></h3> <br>
+      <h3 style="background-color: dimgray; font-style: italic; margin-top: 0px;" class="" id="example"></h3> <br>
 
       <div class="col-md-8 text-center">
         <div class="site-section-title">
@@ -180,7 +180,7 @@ view all
 
     <div class="row mb-5">
       {% for  properties in properties %}
-      <div class="col-md-6 col-lg-4 mb-4">
+      <div class="col-md-6 col-lg-4 mb-4" style="margin-bottom: 20px;">
       
           
        
@@ -192,50 +192,48 @@ view all
             {% if properties.image %}
             <img src="{{properties.image.url}}" alt="Image" class="img-fluid" height="250">
 
-            {% endif %}
           </a>
-          {% if properties.image %}
+        
           <div class="p-4 property-body">
           
             <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
 
-            {% endif %}
-            {% if  properties.name %}
-            <h2 class="property-title"><a href="{% url 'estate_app:detailpage' properties.slug %}">{{properties.name}}</a></h2>
+            
+            <span class="property-specs">Type </span>
+            
+            <span class="property-title"><a href="{% url 'estate_app:detailpage' properties.slug %}">{{ properties.name }}</a></span>
 
-            {% endif %}
-            {% if properties.image %}
-            <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> location</span> <br>
+          
+            <span class="property-specs">location</span>
+            <span class="property-location d-block mb-3"><span class="property-icon icon-location"></span>{{properties.location}}</span> <br>
 
-            {% endif %}
-            {% if properties.price  %}
-            <strong class="property-price text-primary mb-3 d-block text-success">GH₵: {{properties.price}}</strong>
+        
+            <strong class="property-price text-primary mb-3 d-block text-success">GH₵: {{properties.price }}</strong>
 
-            {% endif %}
+          
             <ul class="property-specs-wrap mb-3 mb-lg-0">
-              {% if  properties.bed %}
+             
               <li>
                 <span class="property-specs">Beds</span>
-                <span class="property-specs-number">{{properties.bed}} <sup>+</sup></span>
+                <span class="property-specs-number">{{properties.bed }} <sup>+</sup></span>
 
               </li>
-              {% endif %}
-              {% if properties.bath  %}
+            
               <li>
                 <span class="property-specs">Baths</span>
-                <span class="property-specs-number">{{properties.bath}}</span>
+                <span class="property-specs-number">{{properties.bath }}</span>
 
               </li>
-              {% endif %}
-              {% if properties.sqrt %}
+             
               <li>
                 <span class="property-specs">SQ FT</span>
-                <span class="property-specs-number">{{properties.sqrt}}</span>
+                <span class="property-specs-number">{{properties.sqrt }}</span>
 
               </li>
-              {% endif %}
+             
             </ul>
 
+            {% endif %}
           </div>
         </div>
         
@@ -282,16 +280,41 @@ view all
 </section>
 </div>
 
+  <!-- Call to Action -->
+  <br>
+	<div class="cta_1 ">
+
+		<div class="cta_1_background" style="background-image:url({% static "images/cta_1.jpg" %})"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					
+					<div class="cta_1_content d-flex flex-lg-row flex-column align-items-center justify-content-start">
+						<h3 class="cta_1_text text-lg-left text-center">Do you want to talk with one of our <span>real estate experts?</span></h3>
+            <div class="cta_1_phone">Call now: <a href="tel:+233244153064 ">+233244153064</a> or <a href="tel:+233241568395">+233241568395</a> 
+            </div>
+					</div>
+
+        </div>
+        
+			</div>
+    </div> <br><br><hr>
+    <p ><span class="property-specs text-center icon-download "><a class="download" style="font-size: xx-large;" title="download our registration form" href="{% static "doc/CLERBIDEL ESTATES.pdf" %}" target="_blank" rel="noopener noreferrer"> download our form</a></span></p
+    </div> 
+  </div>
+  <style>
+  .download:hover{
+    background: hsl(240, 40%, 73%);
+  }
+  </style>
+<!-- end Action -->
 
 <div class="site-section">
   <div class="container">
     <div class="row mb-5 justify-content-center">
       <div class="col-md-7">
         <div class="site-section-title text-center">
-          <h2>Our Agents</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero magnam officiis ipsa eum pariatur labore
-            fugit amet eaque iure vitae, repellendus laborum in modi reiciendis quis! Optio minima quibusdam,
-            laboriosam.</p>
+          <h2>Our Directors</h2>
         </div>
       </div>
     </div>

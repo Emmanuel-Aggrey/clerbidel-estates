@@ -19,7 +19,8 @@
     <link rel="stylesheet" href="{% static "fonts/flaticon/font/flaticon.css" %}">
     <link rel="stylesheet" href="{% static "css/fl-bigmug-line.css" %}">  
     <link rel="stylesheet" href="{% static "css/aos.css" %}">
-    <link rel="stylesheet" href="{% static "css/style.css" %}">
+	<link rel="stylesheet" href="{% static "css/style.css" %}">
+	<link rel="stylesheet" href="{% static "css/cta.css" %}">
     <title>
 		
        {% block title %}
@@ -39,11 +40,13 @@
 	})();
 	</script>
 	<!--End of Tawk.to Script-->
+	<!-- heder page -->
+	{% include "partials/heder.html" %}
 </head>
 
 <body>
 
-    {% include "partials/heder.html" %}
+  
 
 	<div class="site-loader"></div>
 
