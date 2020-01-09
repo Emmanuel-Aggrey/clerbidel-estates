@@ -10,7 +10,7 @@
   <div class="site-navbar">
     <div class="container py-1">
       <div class="bs-example">
-        <nav class="navbar navbar-expand-md navbar-light bg-light" style="position: sticky;">
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
             <a href="{% url 'estate_app:home' %}" class="navbar-brand">
                 <img src="{% static "images/logo.jpg" %}" height="50" alt="CoolBrand">
             </a>
@@ -19,7 +19,7 @@
             </button>
     
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav">
+                <div class="navbar-nav" style="font-size: x-large;">
                     <a href="{% url 'estate_app:home' %}" class="nav-item nav-link active">Home</a>
                     <a href="{% url 'estate_app:contact' %}" class="nav-item nav-link">Contact</a>
                     <a href="{% url 'estate_app:about' %}" class="nav-item nav-link">About</a>

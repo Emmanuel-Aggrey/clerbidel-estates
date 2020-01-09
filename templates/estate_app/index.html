@@ -40,7 +40,7 @@ data-stellar-background-ratio="0.5">
             GH₵:  {{properties.price}}
               {% endif %}</strong></p>
 
-          <p><a href="#"
+          <p><a href="{{properties.get_absolute_url}}"
               class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
         </div>
       </div>
@@ -200,7 +200,9 @@ view all
           
             <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
 
-            
+            {% if properties.name or properties.bed or properties.bath %}
+              
+           
             <span class="property-specs">Type </span>
             
             <span class="property-title"><a href="{{properties.get_absolute_url}}">{{ properties.name }}</a></span>
@@ -226,7 +228,7 @@ view all
                 <span class="property-specs-number">{{properties.bath }}</span>
 
               </li>
-             
+              {% endif %}
               <li>
                 <span class="property-specs">SQ FT</span>
                 <span class="property-specs-number">{{properties.sqrt }}</span>
