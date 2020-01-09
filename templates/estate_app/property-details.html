@@ -197,7 +197,7 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
           {% if related_properties.image %}
           <div class="col-md-6 col-lg-4 mb-4 " style="margin-bottom: 20px;">
             <div class="property-entry h-100">
-              <a href="{% url 'estate_app:detailpage' related_properties.slug %}" class="property-thumbnail">
+              <a href="{% url 'estate_app:detailpage' related_properties.id %}" class="property-thumbnail">
                 <div class="offer-type-wrap">
                   <span class="property-specs"><h2 style="color: red;">For</h2> </span>
                  
@@ -206,7 +206,7 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
 
                 
                 </div>
-               
+              
                 <img src="{{related_properties.image.url}}" alt="Image" class="img-fluid" height="300" width="auto">
                   
               
@@ -217,7 +217,7 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
              
                 <span class="property-specs">Name</span>
 
-                <h2 class="property-title"><a href="{% url 'estate_app:detailpage' related_properties.slug %}">{{related_properties.name}}</a></h2>
+                <h2 class="property-title"><a href="{% url 'estate_app:detailpage' related_properties.id %}">{{related_properties.name}}</a></h2>
       
                
                          <!-- <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> location</span> <br> -->

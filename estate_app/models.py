@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 # Create your models here.
 class Basemodel(models.Model):
     date_add = models.DateTimeField(auto_now_add=True)
@@ -52,6 +52,11 @@ class Property(Basemodel):
     
     def __str__(self):
         return '{} {}'.format(self.name,str(self.property_type))
+
+    def get_absolute_url(self):
+       
+        return reverse('estate_app:detailpage', args=[self.id])
+
 
     
 class Agent(Basemodel):

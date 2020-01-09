@@ -1,60 +1,36 @@
 {% load static %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <div class="site-wrap">
 
-  <div class="site-mobile-menu">
-    <div class="site-mobile-menu-header">
-      <div class="site-mobile-menu-close mt-3">
-        <span class="icon-close2 js-menu-toggle"></span>
-      </div>
-    </div>
-    <div class="site-mobile-menu-body"></div>
-  </div> <!-- .site-mobile-menu -->
 
-  <div class="site-navbar mt-4">
+  <div class="site-navbar">
     <div class="container py-1">
-      <div class="row align-items-center">
-        <div class="col-8 col-md-8 col-lg-4">
-          <h1 class="mb-0"><a href="{% url 'estate_app:home' %}" class="text-white h2 mb-0"><strong class="name" style="color: white;"><img src="{% static "images/logo.jpg" %}" alt="" height="80";"></p><span
-                  class="text-danger">.</span></strong></a></h1>
-
-        </div>
-        <div class="col-4 col-md-4 col-lg-8">
-          <nav class="site-navigation text-right text-md-right" role="navigation">
-
-            <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#"
-                class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
-
-            <ul class="site-menu js-clone-nav d-none d-lg-block">
-              <li class="active">
-                <a href="{% url 'estate_app:home' %}"><h3>Home</h3></a>
-              </li>
-              <!-- <li><a href="buy.html">Buy</a></li> -->
-              <!-- <li><a href="rent.html">Rent</a></li> -->
-              <!-- <li class="has-children">
-                <a href="properties.html">Properties</a>
-                <ul class="dropdown arrow-top">
-                  <li><a href="#">Condo</a></li>
-                  <li><a href="#">Property Land</a></li>
-                  <li><a href="#">Commercial Building</a></li>
-                  <li class="has-children">
-                    <a href="#">Sub Menu</a>
-                    <ul class="dropdown">
-                      <li><a href="#">Menu One</a></li>
-                      <li><a href="#">Menu Two</a></li>
-                      <li><a href="#">Menu Three</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li> -->
-              <!-- <li><a href="blog.html">Blog</a></li> -->
-              <li><a href="{% url 'estate_app:about' %}"><h3>About</h3></a></li>
-              <li><a href="{% url 'estate_app:contact' %}"><h3>Contact</h3></a></li>
-            </ul>
-          </nav>
-        </div>
-
-
-      </div>
+      <div class="bs-example">
+        <nav class="navbar navbar-expand-md navbar-light bg-light" style="position: sticky;">
+            <a href="{% url 'estate_app:home' %}" class="navbar-brand">
+                <img src="{% static "images/logo.jpg" %}" height="50" alt="CoolBrand">
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav">
+                    <a href="{% url 'estate_app:home' %}" class="nav-item nav-link active">Home</a>
+                    <a href="{% url 'estate_app:contact' %}" class="nav-item nav-link">Contact</a>
+                    <a href="{% url 'estate_app:about' %}" class="nav-item nav-link">About</a>
+                    <!-- <a href="#" class="nav-item nav-link disabled" tabindex="-1">Reports</a> -->
+                </div>
+                <div class="navbar-nav ml-auto">
+                    <a href="#" class="nav-item nav-link">Login</a>
+                </div>
+            </div>
+        </nav>
     </div>
+            
   </div>
 </div>

@@ -24,6 +24,7 @@ def homeview(request):
        
     context = {
         'properties':property_,
+        # 'backgroud_image':property_.all()[5],
         'agents':agents,
         'p_type':p_type,
         # 'sale_type':sale_type,
@@ -46,8 +47,8 @@ class Hometlistview(ListView):
         return queryset
     
     
-def propertydetalview(request,slug):
-    property_ = get_object_or_404(Property,slug=slug)
+def propertydetalview(request,id):
+    property_ = get_object_or_404(Property,id=id)
     related_properties = Property.objects.filter(available=True)
     context = {
         'object':property_,

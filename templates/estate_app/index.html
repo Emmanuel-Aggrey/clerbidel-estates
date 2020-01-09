@@ -15,7 +15,9 @@ clerdibel &mdash; homepage
   
 
 <div class="slide-one-item home-slider owl-carousel">
-  {% for properties in properties %}
+  
+{% for properties in properties %}
+  
 
 {% if properties.image %}
   
@@ -32,21 +34,21 @@ data-stellar-background-ratio="0.5">
       <div class="row align-items-center justify-content-center text-center">
         <div class="col-md-10">
           <span
-            class="d-inline-block bg-success text-white px-3 mb-3 property-offer-type rounded">FOR {{properties.sale_type}}</span>
+            class="d-inline-block bg-success text-white px-3 mb-3 property-offer-type rounded">For {{properties.sale_type}}</span>
           <!-- <h1 class="mb-2">871 Crenshaw Blvd</h1> -->
           <p class="mb-5"><strong class="h2 text-success font-weight-bold">{% if properties.price %}
             GH₵:  {{properties.price}}
               {% endif %}</strong></p>
 
-          <p><a href="{% url 'estate_app:detailpage' properties.slug  %}"
+          <p><a href="#"
               class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
         </div>
       </div>
     </div>
   </div>
 
+  
   {% endfor %}
-
 </div>
 <!-- search section -->
 <div class="site-section site-section-sm pb-0">
@@ -125,7 +127,7 @@ data-stellar-background-ratio="0.5">
   <div class="container">
  
     <div class="row justify-content-center">
-      <h3 style="background-color: dimgray; font-style: italic; margin-top: 0px;" class="" id="example"></h3> <br>
+      <h5 style="background-color: dimgray; font-style: italic; margin-top: 0px;" class="text-white" id="example"></h5> <br>
 
       <div class="col-md-8 text-center">
         <div class="site-section-title">
@@ -180,12 +182,12 @@ view all
 
     <div class="row mb-5">
       {% for  properties in properties %}
-      <div class="col-md-6 col-lg-4 mb-4" style="margin-bottom: 20px;">
+      <div class="col-md-6 col-lg-4 mb-4" style="margin-bottom: 10px;">
       
           
        
         <div class="property-entry h-100">
-          <a href="{% url 'estate_app:detailpage' properties.slug %}" class="property-thumbnail">
+          <a href="{{properties.get_absolute_url}}" class="property-thumbnail">
             <div class="offer-type-wrap">
               <span class="offer-type bg-danger">{{properties.sale_type}}</span>
             </div>
@@ -201,7 +203,7 @@ view all
             
             <span class="property-specs">Type </span>
             
-            <span class="property-title"><a href="{% url 'estate_app:detailpage' properties.slug %}">{{ properties.name }}</a></span>
+            <span class="property-title"><a href="{{properties.get_absolute_url}}">{{ properties.name }}</a></span>
 
           
             <span class="property-specs">location</span>
@@ -284,15 +286,16 @@ view all
   <br>
 	<div class="cta_1 ">
 
-		<div class="cta_1_background" style="background-image:url({% static "images/cta_1.jpg" %})"></div>
+		<div class="cta_1_background" style="background-image:url()"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col">
 					
 					<div class="cta_1_content d-flex flex-lg-row flex-column align-items-center justify-content-start">
 						<h3 class="cta_1_text text-lg-left text-center">Do you want to talk with one of our <span>real estate experts?</span></h3>
-            <div class="cta_1_phone">Call now: <a href="tel:+233244153064 ">+233244153064</a> or <a href="tel:+233241568395">+233241568395</a> 
-            </div>
+            <div class="cta_1_phone">Call now: <a href="tel:+233244153064 ">+233244153064</a></div> 
+            <div class="cta_1_phone" style="color:rgb(31, 60, 136);">Call now: <a href="tel:+233244153064 ">+233244153064</a> </div>
+
 					</div>
 
         </div>
