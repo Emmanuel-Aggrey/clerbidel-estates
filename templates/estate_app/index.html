@@ -207,10 +207,6 @@ view all
             
             <span class="property-title"><a href="{{properties.get_absolute_url}}">{{ properties.name }}</a></span>
 
-          
-            <span class="property-specs">location</span>
-            <span class="property-location d-block mb-3"><span class="property-icon icon-location"></span>{{properties.location}}</span> <br>
-
         
             <strong class="property-price text-primary mb-3 d-block text-success">GH₵: {{properties.price }}</strong>
 
@@ -234,6 +230,11 @@ view all
                 <span class="property-specs-number">{{properties.sqrt }}</span>
 
               </li>
+
+          
+            <span class="property-specs icon-map "> location</span>
+            <span class="property-location d-block mb-3"><span class="property-icon"></span>{{properties.location}}</span> <br>
+
              
             </ul>
 

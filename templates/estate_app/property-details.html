@@ -28,7 +28,9 @@
             <!-- <h1 class="mb-2">625 S. Berendo St</h1> -->
             <p class="mb-5"><strong class="h2 text-success font-weight-bold">{% if  object.price %}
 GH₵:  {{object.price}}  {% endif %}</strong></p>
+
           </div>
+
         </div>
       </div>
     </div>
@@ -91,6 +93,11 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
                 <span class="property-specs-number">{{object.sqrt}}</span>
                 
               </li>
+
+        
+            <span class="property-specs icon flaticon-location">location</span>
+            <span class="property-location d-block mb-3"><span class="property-icon icon-map"></span>{{object.location}}</span> <br>
+
             </ul>
             </div>
            
@@ -109,6 +116,11 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
              <h2 class="h4 text-black">More Info</h2>
              <p>{{object.description}}</p>
              {% endif %}
+
+        
+          <span class="property-specs icon icon-map"> location</span>
+          <span class="property-location d-block mb-3"><span class="property-icon"></span>{{object.location}}</span> <br>
+
               <div class="row no-gutters mt-5">
                 <div class="col-12">
                   <h2 class="h4 text-black mb-3">Gallery</h2>
@@ -242,6 +254,10 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
                     
                    
                   </li>
+
+          <span class="property-specs icon icon-map"> location</span>
+          <span class="property-location d-block mb-3"><span class="property-icon"></span>{{related_properties.location}}</span> <br>
+
                 </ul>
 
               </div>
