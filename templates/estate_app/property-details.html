@@ -60,20 +60,19 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
             </div>
             <div class="bg-white property-body border-bottom border-left border-right">
               <div class="row mb-5">
-               {% if object.sale_type %}
+               {% if object.sale_type  %}
                <div class="offer-type-wrap">
                 <span class="property-specs">For </span>
 
                 <span class="offer-type bg-danger"><h4 style="color: red;">{{object.sale_type|upper}}</h4></span>
               </div>
                {% endif %}
-               {% if object.price %}
                <div class="col-md-6">
                 <strong class="text-success h1 mb-3"> GH₵: {{object.price}}</strong>
               </div>
-               {% endif %}
-
-             {% if object.bath or object.bed  %}
+               {% if object.bath  or object.bed or object.name %}
+              
+              
              <div class="col-md-6">
               <ul class="property-specs-wrap mb-3 mb-lg-0  float-lg-right">
               <li>
@@ -86,6 +85,7 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
                 <span class="property-specs-number">{{object.bath}}</span>
                 
               </li>
+           
               <li>
                 <span class="property-specs">SQ FT</span>
                 <span class="property-specs-number">{{object.sqrt}}</span>
@@ -93,10 +93,10 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
               </li>
             </ul>
             </div>
-             {% endif %}
+           
               </div>
               <div class="row mb-5">
-               {% if object.name  %}
+              
                <div class="col-md-6 col-lg-4 text-center border-bottom border-top py-3">
                 <span class="property-specs">Type</span>
                 <span class="d-inline-block text-black mb-0 caption-text">{{object.name}}</span>
@@ -205,7 +205,8 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
               <div class="p-4 property-body">
               
                 <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
-             
+                {% if related_properties.name or related_properties.bed or related_properties.bath %}
+
                 <span class="property-specs">Name</span>
 
                 <h2 class="property-title"><a href="{% url 'estate_app:detailpage' related_properties.id %}">{{related_properties.name}}</a></h2>
@@ -233,6 +234,7 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
                     
                
                   </li>
+                  {% endif %}
                   <li>
                     
                     <span class="property-specs">SQ FT</span>

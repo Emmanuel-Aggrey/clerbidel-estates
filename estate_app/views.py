@@ -49,7 +49,7 @@ class Hometlistview(ListView):
     
 def propertydetalview(request,id):
     property_ = get_object_or_404(Property,id=id)
-    related_properties = Property.objects.filter(available=True)
+    related_properties = Property.objects.filter(available=True,price__lte=property_.price)
     context = {
         'object':property_,
         'related':related_properties,
