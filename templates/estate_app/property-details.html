@@ -95,19 +95,20 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
               </li>
 
         
-            <span class="property-specs icon flaticon-location">location</span>
-            <span class="property-location d-block mb-3"><span class="property-icon icon-map"></span>{{object.location}}</span> <br>
-
             </ul>
             </div>
-           
+           <div>
+            <span class="property-specs">Type</span>
+            <h5 class="d-inline-block text-black mb-0 caption-text"> {{object.name}}</h5>
+<br>
+            <span class="property-specs">  location</span>
+            <span class="property-location d-block mb-3"><span class="property-icon icon-map"></span> {{object.location}}</span> <br>
+
+           </div>
               </div>
               <div class="row mb-5">
               
-               <div class="col-md-6 col-lg-4 text-center border-bottom border-top py-3">
-                <span class="property-specs">Type</span>
-                <span class="d-inline-block text-black mb-0 caption-text">{{object.name}}</span>
-              </div>
+              
               
                {% endif %}
                
@@ -116,10 +117,6 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
              <h2 class="h4 text-black">More Info</h2>
              <p>{{object.description}}</p>
              {% endif %}
-
-        
-          <span class="property-specs icon icon-map"> location</span>
-          <span class="property-location d-block mb-3"><span class="property-icon"></span>{{object.location}}</span> <br>
 
               <div class="row no-gutters mt-5">
                 <div class="col-12">
