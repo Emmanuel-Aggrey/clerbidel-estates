@@ -36,37 +36,37 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.sites',
+    # 'django.contrib.sites',
     'django.contrib.humanize',
     'django.contrib.staticfiles',
 
     'estate_app',
 
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
+    # 'allauth',
+    # 'allauth.account',
+    # 'allauth.socialaccount',
     
-    'allauth.socialaccount.providers.google',
+    # 'allauth.socialaccount.providers.google',
 
 
 ]
 
 
-SITE_ID = 1
+# SITE_ID = 1
 
 # Provider specific settings
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        # For each OAuth based provider, either add a ``SocialApp``
-        # (``socialaccount`` app) containing the required client
-        # credentials, or list them here:
-        'APP': {
-            'client_id': 'clerbidel-django-auth',
-            'secret': '',
-            'key': 'AIzaSyAHlxRRI6K1zkNKuPDKOWmxNT5rM4Z_FWI'
-        }
-    }
-}
+# SOCIALACCOUNT_PROVIDERS = {
+#     'google': {
+#         # For each OAuth based provider, either add a ``SocialApp``
+#         # (``socialaccount`` app) containing the required client
+#         # credentials, or list them here:
+#         'APP': {
+#             'client_id': 'clerbidel-django-auth',
+#             'secret': '',
+#             'key': 'AIzaSyAHlxRRI6K1zkNKuPDKOWmxNT5rM4Z_FWI'
+#         }
+#     }
+# }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -110,16 +110,6 @@ DATABASES = {
 }
 
 
-
-AUTHENTICATION_BACKENDS = (
-  
-    # Needed to login by username in Django admin, regardless of `allauth`
-    'django.contrib.auth.backends.ModelBackend',
-
-    # `allauth` specific authentication methods, such as login by e-mail
-    'allauth.account.auth_backends.AuthenticationBackend',
-   
-)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
