@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load humanize %}
 {% load static %}
   
   {% block title %}
@@ -60,17 +60,23 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
 
               </div>
             </div>
-            <div class="bg-white property-body border-bottom border-left border-right">
+            <div class="bg-white property-body border-bottom border-left border-right" style="font-size: large;">
+
+          <span class="property-location d-block mb-3">
+            <span class="property-specs icon flaticon-location"> location</span> 
+            <span class="property-location d-block mb-3"><span class="property-icon "></span> {{object.location}}</span> 
+          
               <div class="row mb-5">
+              
                {% if object.sale_type  %}
                <div class="offer-type-wrap">
                 <span class="property-specs">For </span>
 
-                <span class="offer-type bg-danger"><h4 style="color: red;">{{object.sale_type|upper}}</h4></span>
+                <span class="offer-type bg-danger text-capitalize"><h4 style="color: red;">{{object.sale_type}}</h4></span>
               </div>
                {% endif %}
                <div class="col-md-6">
-                <strong class="text-success h1 mb-3"> GH₵: {{object.price}}</strong>
+                <strong class="text-success h1 mb-3"> GH₵: {{object.price|intcomma}}</strong>
               </div>
                {% if object.bath  or object.bed or object.name %}
               
@@ -94,22 +100,17 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
                 
               </li>
 
-        
+             
+            <!-- <span class="property-specs icon flaticon-location"> location</span>
+            <span class="property-location d-block mb-3"><span class="property-icon "></span> {{object.location}}</span> <br> -->
+            <span class="property-specs">Type</span>
+            <span class="d-inline-block text-black mb-0 caption-text">{{object.name}}</span>
+         
             </ul>
             </div>
-           <div>
-            <span class="property-specs">Type</span>
-            <h5 class="d-inline-block text-black mb-0 caption-text"> {{object.name}}</h5>
-<br>
-            <span class="property-specs">  location</span>
-            <span class="property-location d-block mb-3"><span class="property-icon icon-map"></span> {{object.location}}</span> <br>
-
-           </div>
+           
               </div>
               <div class="row mb-5">
-              
-              
-              
                {% endif %}
                
               </div>
@@ -118,6 +119,7 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
              <p>{{object.description}}</p>
              {% endif %}
 
+        
               <div class="row no-gutters mt-5">
                 <div class="col-12">
                   <h2 class="h4 text-black mb-3">Gallery</h2>
@@ -223,7 +225,7 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
                
                          <!-- <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> location</span> <br> -->
                         
-                         <strong class="property-price text-primary mb-3 d-block text-success"> GH₵:  {{related_properties.price}}</strong>
+                         <strong class="property-price text-primary mb-3 d-block text-success"> GH₵:  {{related_properties.price|intcomma}}</strong>
 
                     
                 <ul class="property-specs-wrap mb-3 mb-lg-0">
