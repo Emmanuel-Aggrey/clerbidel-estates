@@ -3,9 +3,9 @@ from .models import Property,Propertytype,Agent
 # Register your models here.
 
 class FlatPageAdmin(admin.ModelAdmin):
-    list_display = ['id','name','price','property_type','location','sale_type','available']
+    list_display = ['created_by','name','price','property_type','location','sale_type','available']
     list_editable = ['available','price']
-    list_display_links = ['id','name','location']
+    list_display_links = ['created_by','name','location']
     prepopulated_fields = {"slug": ("location",)}
 
     fieldsets = (

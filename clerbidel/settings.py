@@ -41,32 +41,20 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'estate_app',
+    'crispy_forms',
 
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     
     'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
 
 
 ]
 
 
-SITE_ID = 1
 
-# Provider specific settings
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        # For each OAuth based provider, either add a ``SocialApp``
-        # (``socialaccount`` app) containing the required client
-        # credentials, or list them here:
-        'APP': {
-            'client_id': 'clerbidel-django-auth',
-            'secret': '',
-            'key': 'AIzaSyAHlxRRI6K1zkNKuPDKOWmxNT5rM4Z_FWI'
-        }
-    }
-}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -111,6 +99,21 @@ DATABASES = {
 
 
 
+# Provider specific settings
+# SOCIALACCOUNT_PROVIDERS = {
+#     'google': {
+#         # For each OAuth based provider, either add a ``SocialApp``
+#         # (``socialaccount`` app) containing the required client
+#         # credentials, or list them here:
+#         'APP': {
+#             'client_id': 'clerbidel-django-auth',
+#             'secret': '',
+#             'key': 'AIzaSyAHlxRRI6K1zkNKuPDKOWmxNT5rM4Z_FWI'
+#         }
+#     }
+# }
+
+
 AUTHENTICATION_BACKENDS = (
   
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -120,6 +123,32 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
    
 )
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+# ACCOUNT_SESSION_REMEMBER = 'yes'
+
+# GOOGLE EMAIL
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'clerbidel@gmail.com'
+EMAIL_HOST_PASSWORD = 'clerbidel123@1'
+
+SITE_ID = 1
+
+
+LOGIN_REDIRECT_URL = 'estate_app:home'
+# LOGOUT_REDIRECT_URL = ''
+
+LOGIN_URL = 'account_login'
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

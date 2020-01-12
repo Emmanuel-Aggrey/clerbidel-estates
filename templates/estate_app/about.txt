@@ -11,4 +11,7 @@
         address: Afienya near Stariua Preperatory School junction
 
 
+cliant id ='654844318358-j7cuu106ai1ru4krbvbra1ad30ckmdh6.apps.googleusercontent.com'
+
         
+secret = 'L8-QKpzHNC-T_g2n4PaIbrJx'

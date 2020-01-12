@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 from django.urls import reverse
 # Create your models here.
 class Basemodel(models.Model):
@@ -47,7 +49,7 @@ class Property(Basemodel):
     image4 = models.FileField(upload_to='uploads/%Y/%m/%d/',blank=True, null=True)
     image5 = models.FileField(upload_to='uploads/%Y/%m/%d/',blank=True, null=True)
 
-
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE,blank=True, null=True)
  
     
     def __str__(self):
@@ -56,6 +58,17 @@ class Property(Basemodel):
     def get_absolute_url(self):
        
         return reverse('estate_app:detailpage', args=[self.id])
+
+    def delete(self, *args, **kwargs):
+       
+        if self.image or  self.image1 or self.image2 or self.image3 or self.image4 or self.image5:
+            self.image1.delete()
+            self.image2.delete()
+            self.image3.delete()
+            self.image4.delete()
+            self.image5.delete()
+        super().delete(*args, **kwargs)
+        
 
 
     

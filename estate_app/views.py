@@ -1,13 +1,18 @@
-from django.shortcuts import render,get_object_or_404
 
+from django.shortcuts import render,get_object_or_404,redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from  django.views.generic import  TemplateView,DetailView,ListView
-from  django.views.generic.edit import  CreateView
+from django.urls import reverse_lazy
+from  django.views.generic.edit import  CreateView,DeleteView
 from .models import Propertytype,Property,Agent
+from .forms import AddlandForm,AddhouseForm
 from  django.db.models import  Q
 # Create your views here.
 
 
 def homeview(request):
+    # request.session['user'] = request.user
     property_ = Property.objects.filter(available=True)
     agents = Agent.objects.filter(available=True)
     p_type = property_.values_list('property_type__name',flat=True).distinct()
@@ -48,7 +53,9 @@ class Hometlistview(ListView):
     
     
 def propertydetalview(request,id):
+    # related_properties = None
     property_ = get_object_or_404(Property,id=id)
+    # if property_.price:
     related_properties = Property.objects.filter(available=True,price__lte=property_.price)
     context = {
         'object':property_,
@@ -78,8 +85,51 @@ class AboutView(ListView):
     template_name = 'estate_app/about.html'
     queryset = Agent.objects.filter(available=True)
 
+class Addlandview(LoginRequiredMixin,CreateView,ListView):
+    # model = Property
+    paginate_by = '5'
+    form_class = AddlandForm
+    success_url = reverse_lazy('estate_app:addland')
+
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user        
+        return super().form_valid(form)
+    
+    def get_queryset(self):
+        queryset = Property.objects.filter(available=True,property_type__name__iexact='land',\
+        created_by=self.request.user).order_by('-date_updated')
+        return queryset 
+    
+
+    
+ 
+class Addhomeview(LoginRequiredMixin,CreateView,ListView):
+    paginate_by = '5'
+    model = Property
+    form_class =AddhouseForm
+    success_url = reverse_lazy('estate_app:addhome')
+   
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user        
+        return super().form_valid(form)
+    def get_queryset(self):
+        queryset = Property.objects.filter(available=True,property_type__name__iexact='building',\
+        created_by=self.request.user).order_by('-date_updated')
+        return queryset 
+    
+    
+   
+def deleteland(request,id):
+    if request.method == 'POST':
+        property_ = Property.objects.get(id=id)
+        property_.delete()
+        
+        return redirect('estate_app:addland')
 
 
-
-
-
+def deletehome(request,id):
+    if request.method == 'POST':
+        property_ = Property.objects.get(id=id)
+        property_.delete()
+        
+        return redirect('estate_app:addhome')

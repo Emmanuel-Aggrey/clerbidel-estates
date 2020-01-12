@@ -1,0 +1,181 @@
+{% extends "base1.html" %}
+{% load crispy_forms_tags %}
+
+{% block tittle %}
+{% endblock tittle %}
+
+{% block body %}
+
+
+
+<br><br><br>
+<div class="container">
+
+{% if  form.bath %}
+  <h4 class="text-center">ADD A NEW BUILDING</h4>
+{% else %}
+ <h4 class="text-center"> ADD A NEW LAND </h4> 
+{% endif %}
+
+
+    <div class="row">
+        <form action="" method="POST" enctype="multipart/form-data">
+            <button type="submit" class="btn btn-success float-right btn-lg">Save</button>
+
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-6">
+                  {{ form.property_type|as_crispy_field }}
+                </div>
+                <div class="col-6">
+                  {{ form.price|as_crispy_field }}
+                </div>
+                <div class="col-6">
+                    {{ form.location|as_crispy_field }}
+                </div>
+                <div class="col-6">
+                    {{ form.sqrt|as_crispy_field }}
+                </div>
+                <div class="col-6">
+                    {{ form.description|as_crispy_field }} 
+                </div>
+                <div class="col-2">
+                    {{ form.sale_type|as_crispy_field }} 
+                </div>
+                <!-- if here -->
+               {% if form.bath %}
+               <div class="col-2">
+                {{ form.bath|as_crispy_field }} 
+            </div>
+            <div class="col-2">
+                {{ form.bed|as_crispy_field }} 
+            </div>
+                 
+               {% endif %}
+                <!-- end if here -->
+                <!-- image -->
+                <div class="col-2">
+                    {{ form.image|as_crispy_field }} 
+                </div>
+                <div class="col-2">
+                    {{ form.image1|as_crispy_field }} 
+                </div>
+                <div class="col-2">
+                    {{ form.image2|as_crispy_field }} 
+                </div>
+                <div class="col-2">
+                    {{ form.image3|as_crispy_field }} 
+                </div>
+                <div class="col-2">
+                    {{ form.image4|as_crispy_field }} 
+                </div>
+                <div class="col-2">
+                    {{ form.image5|as_crispy_field }} 
+                </div>
+               
+              </div>
+              
+             
+
+    </form>
+      
+   <!-- form  here -->
+
+    </div>
+</div>
+
+
+<!-- end of form list below -->
+<hr>
+
+<div class="container">
+    <div class="row">
+        <legend>All your property(s) {{object_list|length}}</legend>
+
+        <table id="" class="table table-bordered table-hover ">
+  
+            <thead class="thead-light ">
+        
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Location </th>
+                    <th scope="col">Image</th>    
+                      
+                   
+                       <th scope="col">delete</th>
+        
+                </tr>
+            </thead>
+          {% for  property in object_list %}
+        
+            <tbody>
+           
+                <tr >
+                 <td id="id" scope ="row"> 00{{ property.id }}  </td>
+                 <td id="id" scope ="row"> {{ property.location }}  </td>
+                 {% if property.image %}
+                  <td scope ="row"> 
+                    <a href="{% url 'estate_app:detailpage' property.id %}">
+                    <img src="{{ property.image.url }}" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="" style="height: 100px; width:150px"> 
+                </a>
+                </td>
+     
+                  {% else %}
+                  <td>no image</td>
+                  {% endif %}
+                
+                  {% if not form.bath %}
+                  <td>
+                      <form action="{% url 'estate_app:deleteland' property.id%}" method="post">
+                        {% csrf_token %}
+                          <button type="submit" class="btn text-danger">delete</button>
+                      </form>
+                  </td>
+
+                  {% else %}
+                  <td>
+                    <form action="{% url 'estate_app:deletehome' property.id%}" method="post">
+                        {% csrf_token %}
+                          <button  type="submit" class="btn">delete</button>
+                      </form>
+                  </td>
+                    
+                  {% endif %}
+                  
+                        
+                </tr>
+        
+              {% empty %}
+        
+              <p class="text-muted"> sorry No result available</p>
+            </tbody>
+        
+            {% endfor %}
+        </table>
+
+        {% if is_paginated %}
+        <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    {% if page_obj.has_previous %}
+      <li><a href="?page={{ page_obj.previous_page_number }}">back</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li><a href="?page={{ page_obj.next_page_number }}">next</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+</nav>
+{% endif %}
+    </div>
+</div>
+{% endblock body %}
