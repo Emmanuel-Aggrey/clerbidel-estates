@@ -52,6 +52,7 @@ INSTALLED_APPS = [
 
 
 ]
+SITE_ID = 2
 
 
 
@@ -140,7 +141,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'clerbidel@gmail.com'
 EMAIL_HOST_PASSWORD = 'clerbidel123@1'
 
-SITE_ID = 1
+
 
 
 LOGIN_REDIRECT_URL = 'estate_app:home'
