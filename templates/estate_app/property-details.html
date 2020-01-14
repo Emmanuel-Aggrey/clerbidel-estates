@@ -103,6 +103,8 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
              
             <!-- <span class="property-specs icon flaticon-location"> location</span>
             <span class="property-location d-block mb-3"><span class="property-icon "></span> {{object.location}}</span> <br> -->
+          
+
             <span class="property-specs">Type</span>
             <span class="d-inline-block text-black mb-0 caption-text">{{object.name}}</span>
          
@@ -118,6 +120,12 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
              <h2 class="h4 text-black">More Info</h2>
              <p>{{object.description}}</p>
              {% endif %}
+             {% if object.created_by %}
+             <strong class="property-price text-muted mb-3 d-block text-success"> 
+              
+               by: {{object.created_by }} <a href="tel:+233240699506"></a></strong>
+ 
+               {% endif %}
 
         
               <div class="row no-gutters mt-5">
@@ -258,6 +266,8 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
           <span class="property-location d-block mb-3"><span class="property-icon"></span>{{related_properties.location}}</span> <br>
 
                 </ul>
+                <strong class="property-price text-muted mb-3 d-block text-success">by: {{related_properties.created_by }} <a href="tel:+233240699506"></a></strong>
+
 
               </div>
             </div>

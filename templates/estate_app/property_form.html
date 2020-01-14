@@ -20,62 +20,62 @@
 
     <div class="row">
         <form action="" method="POST" enctype="multipart/form-data">
-            <button type="submit" class="btn btn-success float-right btn-lg">Save</button>
 
             {% csrf_token %}
             <div class="row">
-                <div class="col-6">
+                <div class="col-lg-6 col-md-6 col-sm-4 col-xs-6">
                   {{ form.property_type|as_crispy_field }}
                 </div>
-                <div class="col-6">
+                <div class="col-lg-6 col-md-6 col-sm-4 col-xs-6">
                   {{ form.price|as_crispy_field }}
                 </div>
-                <div class="col-6">
+                <div class="col-lg-6 col-md-6 col-sm-4 col-xs-6">
                     {{ form.location|as_crispy_field }}
                 </div>
-                <div class="col-6">
+                <div class="col-lg-6 col-md-6 col-sm-4 col-xs-6">
                     {{ form.sqrt|as_crispy_field }}
                 </div>
-                <div class="col-6">
+                <div class="col-lg-6 col-md-6 col-sm-4 col-xs-6">
                     {{ form.description|as_crispy_field }} 
                 </div>
-                <div class="col-2">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
                     {{ form.sale_type|as_crispy_field }} 
                 </div>
                 <!-- if here -->
                {% if form.bath %}
-               <div class="col-2">
+               <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
                 {{ form.bath|as_crispy_field }} 
             </div>
-            <div class="col-2">
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
                 {{ form.bed|as_crispy_field }} 
             </div>
                  
                {% endif %}
                 <!-- end if here -->
                 <!-- image -->
-                <div class="col-2">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     {{ form.image|as_crispy_field }} 
                 </div>
-                <div class="col-2">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     {{ form.image1|as_crispy_field }} 
                 </div>
-                <div class="col-2">
+                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
                     {{ form.image2|as_crispy_field }} 
                 </div>
-                <div class="col-2">
+                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
                     {{ form.image3|as_crispy_field }} 
                 </div>
-                <div class="col-2">
+                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
                     {{ form.image4|as_crispy_field }} 
                 </div>
-                <div class="col-2">
+                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
                     {{ form.image5|as_crispy_field }} 
                 </div>
                
               </div>
               
-             
+              <button type="submit" class="btn text-white  btn-block btn-lg" style="background: rgb(54, 78, 104);">Save</button>
+
 
     </form>
       

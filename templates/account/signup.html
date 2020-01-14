@@ -29,11 +29,11 @@
 
 <hr>
 <div>
-  <p class="text-center text-muted">Sign in with!</p>
+  {% comment %} <p class="text-center text-muted">Sign in with!</p>
 
 <ul class="socialaccount_providers list-unstyled text-center">
   {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-</ul>
+</ul> {% endcomment %}
 </div>
 
 {% endblock %}
