@@ -2,6 +2,8 @@
 {% load static %}
 <html lang="en">
 <head>
+
+
 	<link rel="shortcut icon" href="{% static "images/logo.jpg" %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,8 +44,14 @@
 	</script>
 	<!--End of Tawk.to Script-->
 	<!-- heder page -->
-	{% include "partials/heder.html" %}
 </head>
+{% if  not request.user.is_authenticated %}
+{% include "partials/scroll_text.html" %}
+
+{% endif %}
+{% include "partials/heder.html" %}
+
+
 
 <body>
 
@@ -54,7 +62,7 @@
 	
     {% block body %}
 
-      
+
     {% endblock body  %}
 
     {% include "partials/footer.html" %}
