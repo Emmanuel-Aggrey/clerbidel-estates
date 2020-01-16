@@ -1,8 +1,14 @@
 from  django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Row, Column
-from .models import Propertytype,Property
+from .models import Propertytype,Property,Phone
 # class 
+
+class PhoneForm(forms.ModelForm):
+    class Meta:
+    
+        model = Phone
+        fields = '__all__'
 
 class AddlandForm(forms.ModelForm):
     description = forms.Textarea(attrs={'cols':1,'rows':2,'placeholder':'enter description about the property'})

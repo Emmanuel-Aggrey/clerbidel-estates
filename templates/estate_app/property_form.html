@@ -8,6 +8,7 @@
 
 
 
+
 <br><br><br>
 <div class="container">
 
@@ -100,9 +101,9 @@
                     <th scope="col">#</th>
                     <th scope="col">Location </th>
                     <th scope="col">Image</th>    
-                      
+                    <th scope="col">Action</th>    
                    
-                       <th scope="col">delete</th>
+                       
         
                 </tr>
             </thead>
@@ -128,19 +129,25 @@
                   <td>
                       <form action="{% url 'estate_app:deleteland' property.id%}" method="post">
                         {% csrf_token %}
-                          <button type="submit" class="btn text-danger">delete</button>
-                      </form>
+                          <button type="submit" class="btn-link text-danger icon-trash"></button>
+                      </form><br>
+                      <a href="{% url 'estate_app:updateland' property.pk %}" class="icon-pencil"></a>
                   </td>
+
 
                   {% else %}
                   <td>
                     <form action="{% url 'estate_app:deletehome' property.id%}" method="post">
                         {% csrf_token %}
-                          <button  type="submit" class="btn">delete</button>
-                      </form>
+                          <button  type="submit" class="btn-link text-danger icon-trash"></button>
+                      </form><br>
+                      <a href="{% url 'estate_app:updatehome' property.pk %}" class="icon-pencil"></a>
                   </td>
-                    
+                  
+
+
                   {% endif %}
+
                   
                         
                 </tr>
@@ -178,4 +185,11 @@
 {% endif %}
     </div>
 </div>
+
+<style>
+body{
+  background-color: rgba(250, 249, 249, 0.911);
+}
+</style>
+
 {% endblock body %}

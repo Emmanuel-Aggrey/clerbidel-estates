@@ -88,3 +88,6 @@ class Agent(Basemodel):
         verbose_name = 'Leader'
         verbose_name_plural = 'Leaders'
         ordering  =['-date_updated']
+
+class Phone(models.Model):
+    phonenumber = models.OneToOneField(User,on_delete=models.CASCADE)

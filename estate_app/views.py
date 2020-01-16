@@ -4,14 +4,18 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from  django.views.generic import  TemplateView,DetailView,ListView
 from django.urls import reverse_lazy
-from  django.views.generic.edit import  CreateView,DeleteView
+from  django.views.generic.edit import  CreateView,DeleteView,UpdateView
 from .models import Propertytype,Property,Agent
-from .forms import AddlandForm,AddhouseForm
+from .forms import AddlandForm,AddhouseForm,PhoneForm
 from  django.db.models import  Q
 # Create your views here.
 
 
 def homeview(request):
+    form = PhoneForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('estate_app:home')
     # request.session['user'] = request.user
     property_ = Property.objects.filter(available=True)
     agents = Agent.objects.filter(available=True)
@@ -34,6 +38,7 @@ def homeview(request):
         'p_type':p_type,
         # 'sale_type':sale_type,
         'location':location,
+        'form':form,
 
 
     }
@@ -86,6 +91,7 @@ class AboutView(ListView):
     queryset = Agent.objects.filter(available=True)
 
 class Addlandview(LoginRequiredMixin,CreateView,ListView):
+   
     # model = Property
     paginate_by = '5'
     form_class = AddlandForm
@@ -100,8 +106,15 @@ class Addlandview(LoginRequiredMixin,CreateView,ListView):
         created_by=self.request.user).order_by('-date_updated')
         return queryset 
     
+class Updatelandview(LoginRequiredMixin,UpdateView):
+    model = Property
+    template_name = 'estate_app/property_form.html'
+    success_url = reverse_lazy('estate_app:addland')
+    form_class = AddlandForm
 
-    
+
+
+
  
 class Addhomeview(LoginRequiredMixin,CreateView,ListView):
     paginate_by = '5'
@@ -117,7 +130,16 @@ class Addhomeview(LoginRequiredMixin,CreateView,ListView):
         created_by=self.request.user).order_by('-date_updated')
         return queryset 
     
-    
+class Updatehomeview(LoginRequiredMixin,UpdateView):
+    model = Property
+    template_name = 'estate_app/property_form.html'
+    form_class =AddhouseForm
+    success_url = reverse_lazy('estate_app:addhome')
+
+
+
+
+  
    
 def deleteland(request,id):
     if request.method == 'POST':

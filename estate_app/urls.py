@@ -11,4 +11,6 @@ urlpatterns = [
     path('addhome/',views.Addhomeview.as_view(),name='addhome'),
     path('deleteland/<int:id>/',views.deleteland,name='deleteland'),
     path('deletehome/<int:id>/',views.deletehome,name='deletehome'),
+    path('updateland/<int:pk>/',views.Updatelandview.as_view(),name='updateland'),
+    path('updatehome/<int:pk>/',views.Updatehomeview.as_view(),name='updatehome'),
 ]
