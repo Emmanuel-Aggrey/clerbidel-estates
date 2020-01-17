@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Property,Propertytype,Agent
+from .models import Property,Propertytype,Agent,Gallary
 # Register your models here.
 
 class FlatPageAdmin(admin.ModelAdmin):
@@ -29,3 +29,6 @@ class AgentAdmin(admin.ModelAdmin):
     list_display = ['name','position','facebook_url','linkedin_url','twitter_url','available']
 
 admin.site.register(Agent,AgentAdmin)
+
+
+admin.site.register(Gallary)

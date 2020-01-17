@@ -5,7 +5,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from  django.views.generic import  TemplateView,DetailView,ListView
 from django.urls import reverse_lazy
 from  django.views.generic.edit import  CreateView,DeleteView,UpdateView
-from .models import Propertytype,Property,Agent
+from .models import Propertytype,Property,Agent,Gallary
 from .forms import AddlandForm,AddhouseForm,PhoneForm
 from  django.db.models import  Q
 # Create your views here.
@@ -17,6 +17,7 @@ def homeview(request):
         form.save()
         return redirect('estate_app:home')
     # request.session['user'] = request.user
+    gallary = Gallary.objects.all()
     property_ = Property.objects.filter(available=True)
     agents = Agent.objects.filter(available=True)
     p_type = property_.values_list('property_type__name',flat=True).distinct()
@@ -32,6 +33,7 @@ def homeview(request):
         property_ = property_.filter(Q(property_type__name__icontains=query)|Q(sale_type__icontains=query1)|Q(location__icontains=query2))
        
     context = {
+        'gallary':gallary,
         'properties':property_,
         # 'backgroud_image':property_.all()[5],
         'agents':agents,

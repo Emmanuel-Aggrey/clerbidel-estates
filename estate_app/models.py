@@ -91,3 +91,7 @@ class Agent(Basemodel):
 
 class Phone(models.Model):
     phonenumber = models.OneToOneField(User,on_delete=models.CASCADE)
+
+class Gallary(models.Model):
+    name = models.TextField(blank=True, null=True)
+    image = models.FileField(upload_to='gallary/%Y/%m/%d/')
