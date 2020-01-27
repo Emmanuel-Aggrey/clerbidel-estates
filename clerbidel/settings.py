@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     'estate_app',
     'crispy_forms',
+    'rest_framework',
 
     'allauth',
     'allauth.account',

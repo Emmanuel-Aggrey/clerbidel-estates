@@ -1,5 +1,6 @@
 {% extends "base1.html" %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block tittle %}
 {% endblock tittle %}
@@ -20,6 +21,38 @@
 
 
     <div class="row">
+      <!--start phone -->
+      <!-- <h3 class="text-danger">{{ request.user.userphone.phonenumber}}</h3> -->
+      {% if not request.user.userphone.phonenumber %}
+        
+    
+      <div class="col ">
+       <form  method="POST" id="addphone">
+         {% csrf_token %}
+        <div class="form-group">
+          <!-- <label class="float-right" for="phone">phone</label> -->
+          <button title="add phone number" type="submit" class="btn-sm btn-primary float-right icon-plus"></button>
+          <input id="phonenumber" class="float-right" type="tel" name="" placeholder="add phone number" required>
+
+        </div>
+        
+       </form>
+       
+       <br><br> 
+        <button class="btn-sm btn-primary float-right btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          why phone
+        </button>
+      
+        <hr>
+      <div class="collapse" id="collapseExample"> 
+        <div class="card card-body text-danger">
+          we add your phone number to all your properties that you can be reached when someone wants to reach you or buy
+        </div>
+        <hr>
+      </div>
+      </div>
+      {% endif %}
+      <!-- phone end -->
         <form action="" method="POST" enctype="multipart/form-data">
 
             {% csrf_token %}
@@ -191,5 +224,28 @@ body{
   background-color: rgba(250, 249, 249, 0.911);
 }
 </style>
+
+<script>
+  $('#addphone').on('submit',function(e){
+    
+      e.preventDefault();
+     
+      $.ajax({
+          type:'POST',
+          url:'/api/create/',
+          data:{
+            phonenumber:$('#phonenumber').val(),
+              csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+      
+          },
+          success:function(){
+              console.log('created', this.url)
+              alert('saved',$('#name').val())
+              
+          }
+
+      })
+  })
+  </script>
 
 {% endblock body %}

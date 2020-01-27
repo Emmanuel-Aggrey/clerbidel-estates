@@ -4,10 +4,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from  django.views.generic import  TemplateView,DetailView,ListView
 from django.urls import reverse_lazy
+from  rest_framework import generics
+from .serializers import Phoneserializer
 from  django.views.generic.edit import  CreateView,DeleteView,UpdateView
-from .models import Propertytype,Property,Agent,Gallary
+from .models import Propertytype,Property,Agent,Gallary,Phone
 from .forms import AddlandForm,AddhouseForm,PhoneForm
 from  django.db.models import  Q
+
 # Create your views here.
 
 
@@ -67,6 +70,7 @@ def propertydetalview(request,id):
     context = {
         'object':property_,
         'related':related_properties,
+    
 
     }
     return render(request,'estate_app/property-details.html',context)
@@ -157,3 +161,15 @@ def deletehome(request,id):
         property_.delete()
         
         return redirect('estate_app:addhome')
+
+
+class Addphoneview(generics.CreateAPIView):
+    serializer_class = Phoneserializer
+    def post(self,request):
+        return self.create(request)
+    
+    def perform_create(self,serializer):
+        serializer.save(user=self.request.user)
+
+class UserphoneExistview(generics.ListAPIView):
+    pass

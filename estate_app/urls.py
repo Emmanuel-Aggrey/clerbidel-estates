@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path,include
 from .import  views
 
 app_name= 'estate_app'
@@ -13,4 +13,5 @@ urlpatterns = [
     path('deletehome/<int:id>/',views.deletehome,name='deletehome'),
     path('updateland/<int:pk>/',views.Updatelandview.as_view(),name='updateland'),
     path('updatehome/<int:pk>/',views.Updatehomeview.as_view(),name='updatehome'),
+
 ]

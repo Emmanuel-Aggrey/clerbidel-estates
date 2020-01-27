@@ -66,6 +66,13 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
             <span class="property-specs icon flaticon-location"> location</span> 
             <span class="property-location d-block mb-3"><span class="property-icon "></span> {{object.location}}</span> 
           
+            {% if  request.user.userphone.phonenumber %}
+            <strong class="property-price"> Phone:   {{ request.user.userphone.phonenumber}}</strong>
+              {% else %}
+              <strong class="property-price text-primary mb-3 d-block text-success"> Phone:  no phone </strong>
+
+            {% endif %}
+
               <div class="row mb-5">
               
                {% if object.sale_type  %}
@@ -224,6 +231,7 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
               <div class="p-4 property-body">
               
                 <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
+
                 {% if related_properties.name or related_properties.bed or related_properties.bath %}
 
                 <span class="property-specs">Name</span>
@@ -235,7 +243,8 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
                         
                          <strong class="property-price text-primary mb-3 d-block text-success"> GH₵:  {{related_properties.price|intcomma}}</strong>
 
-                    
+                       
+
                 <ul class="property-specs-wrap mb-3 mb-lg-0">
                   <li>
                  

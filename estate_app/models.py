@@ -90,8 +90,13 @@ class Agent(Basemodel):
         ordering  =['-date_updated']
 
 class Phone(models.Model):
-    phonenumber = models.OneToOneField(User,on_delete=models.CASCADE)
+    user = models.OneToOneField(User,on_delete=models.CASCADE,related_name='userphone')
+    phonenumber =models.CharField(max_length=15,blank=True, null=True)
+
+    def __str__(self):
+        return str(self.user)
+
 
 class Gallary(models.Model):
-    name = models.TextField(blank=True, null=True)
+    name = models.TextField('about',blank=True, null=True,help_text='enter something about this image')
     image = models.FileField(upload_to='gallary/%Y/%m/%d/')

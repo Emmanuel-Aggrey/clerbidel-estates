@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Property,Propertytype,Agent,Gallary
+from .models import Property,Propertytype,Agent,Gallary,Phone
 # Register your models here.
 
 class FlatPageAdmin(admin.ModelAdmin):
@@ -32,3 +32,11 @@ admin.site.register(Agent,AgentAdmin)
 
 
 admin.site.register(Gallary)
+
+class PhoneAdmin(admin.ModelAdmin):
+    list_display = ['user','phonenumber',]
+    list_editable = ['phonenumber',]
+
+
+
+admin.site.register(Phone,PhoneAdmin)
