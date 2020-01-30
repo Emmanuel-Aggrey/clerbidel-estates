@@ -25,7 +25,7 @@ def homeview(request):
     agents = Agent.objects.filter(available=True)
     p_type = property_.values_list('property_type__name',flat=True).distinct()
     # sale_type = property_.values('sale_type',flat=True).distinct()
-    location = property_.values_list('location',flat=True).distinct().exclude(property_type__name='BUILDING')
+    location = property_.values_list('location',flat=True).distinct()#.exclude(property_type__name='BUILDING')
 
 
     query = request.GET.get('p_type')
