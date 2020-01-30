@@ -3,14 +3,14 @@ from .models import Property,Propertytype,Agent,Gallary,Phone
 # Register your models here.
 
 class FlatPageAdmin(admin.ModelAdmin):
-    list_display = ['created_by','name','price','property_type','location','sale_type','available']
+    list_display = ['created_by','name','price','property_type','location','sale_type','available','created_by']
     list_editable = ['available','price']
     list_display_links = ['created_by','name','location']
     prepopulated_fields = {"slug": ("location",)}
 
     fieldsets = (
         ('ALL PROPERTIIES', {
-            'fields': ('property_type',('location','slug'),'description','sale_type','available','image','image1','image2','image3','image4')
+            'fields': ('property_type',('location','slug'),'description','sale_type','available','created_by','image','image1','image2','image3','image4')
         }),
         ('HOUSE OR BUILDING', {
             'classes':  ('wide', 'extrapretty'),

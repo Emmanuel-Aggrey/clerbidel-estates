@@ -70,7 +70,7 @@ def propertydetalview(request,id):
     context = {
         'object':property_,
         'related':related_properties,
-    
+        # 'userphone':Phone.objects.filter(user=property_.created_by)
 
     }
     return render(request,'estate_app/property-details.html',context)
@@ -104,7 +104,9 @@ class Addlandview(LoginRequiredMixin,CreateView,ListView):
     success_url = reverse_lazy('estate_app:addland')
 
     def form_valid(self, form):
-        form.instance.created_by = self.request.user        
+        form.instance.created_by = self.request.user   
+        form.instance.user_phone = self.request.user.userphone.phonenumber   
+ 
         return super().form_valid(form)
     
     def get_queryset(self):

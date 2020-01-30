@@ -10,6 +10,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="google-site-verification" content="M2SUFNOHfMJkiCOEVur0ZCk-LItyUrIm0qvVn15RhVQ" />
 
+
+<!--  -->
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!--  -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500"> 
     <link rel="stylesheet" href="{% static "fonts/icomoon/style.css" %}">
     <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
@@ -45,6 +55,8 @@
 	</script>
 	<!--End of Tawk.to Script-->
 	<!-- heder page -->
+
+
 </head>
 {% if  not request.user.is_authenticated %}
 {% include "partials/scroll_text.html" %}
@@ -60,7 +72,8 @@
 
 	<div class="site-loader"></div>
 
-	
+	<!-- Go to www.addthis.com/dashboard to customize your tools -->
+	 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e2f69888e88b125"></script>
     {% block body %}
 
 

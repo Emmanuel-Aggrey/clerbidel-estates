@@ -23,6 +23,8 @@
     <div class="row">
       <!--start phone -->
       <!-- <h3 class="text-danger">{{ request.user.userphone.phonenumber}}</h3> -->
+      <p  id="saved_info" class="text-danger"></p>
+
       {% if not request.user.userphone.phonenumber %}
         
     
@@ -36,17 +38,20 @@
 
         </div>
         
-       </form>
-       
-       <br><br> 
+        <br><br> 
         <button class="btn-sm btn-primary float-right btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
           why phone
         </button>
+       </form>
+       
+       
       
         <hr>
       <div class="collapse" id="collapseExample"> 
         <div class="card card-body text-danger">
-          we add your phone number to all your properties that you can be reached when someone wants to reach you or buy
+          <p>we add your phone number to all your properties that you can be reached when someone wants to reach you or buy
+              <br>currenly you have no phone create one
+          </p>
         </div>
         <hr>
       </div>
@@ -63,9 +68,12 @@
                 <div class="col-lg-6 col-md-6 col-sm-4 col-xs-6">
                   {{ form.price|as_crispy_field }}
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-4 col-xs-6">
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                     {{ form.location|as_crispy_field }}
                 </div>
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                  {{ form.name|as_crispy_field }}
+              </div>
                 <div class="col-lg-6 col-md-6 col-sm-4 col-xs-6">
                     {{ form.sqrt|as_crispy_field }}
                 </div>
@@ -126,7 +134,7 @@
     <div class="row">
         <legend>All your property(s) {{object_list|length}}</legend>
 
-        <table id="" class="table table-bordered table-hover ">
+        <table id="remove" class="table table-bordered table-hover ">
   
             <thead class="thead-light ">
         
@@ -174,7 +182,7 @@
                         {% csrf_token %}
                           <button  type="submit" class="btn-link text-danger icon-trash"></button>
                       </form><br>
-                      <a href="{% url 'estate_app:updatehome' property.pk %}" class="icon-pencil"></a>
+                      <a id="edit" href="{% url 'estate_app:updatehome' property.pk %}" class="icon-pencil"></a>
                   </td>
                   
 
@@ -225,7 +233,11 @@ body{
 }
 </style>
 
+<script src="{% static "js/jquery-3.3.1.min.js" %}"></script>
+
+
 <script>
+  $('#id_description').height(60)
   $('#addphone').on('submit',function(e){
     
       e.preventDefault();
@@ -239,13 +251,23 @@ body{
       
           },
           success:function(){
-              console.log('created', this.url)
-              alert('saved',$('#name').val())
+              // console.log('created', this.url)
+              // alert('saved',$('#name').val())
+              $('#addphone').remove()
+              $('#saved_info').text('phone number saved').fadeOut(3000);
               
           }
 
       })
+      
   })
+
+$('.icon-pencil').click(function(){
+  $('icon-pencil').preventDefault()
+  $('legend').remove()
+  console.log('legend is here')
+})
+
   </script>
 
 {% endblock body %}

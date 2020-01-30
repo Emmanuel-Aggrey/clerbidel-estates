@@ -1,7 +1,6 @@
 {% extends "base1.html" %}
 {% load humanize %}
 {% load static %}
-  
   {% block title %}
   clerbibel &mdash;  {{object.location}}- {% if object.name %}
   object.name 
@@ -26,8 +25,8 @@
             {% endif %} </span>
 
             <!-- <h1 class="mb-2">625 S. Berendo St</h1> -->
-            <p class="mb-5"><strong class="h2 text-success font-weight-bold">{% if  object.price %}
-GH₵:  {{object.price}}  {% endif %}</strong></p>
+            <p class="mb-5"><strong class="text-danger font-weight-bold">{% if  object.price %}
+GH₵:  {{object.price|intcomma}}  {% endif %}</strong></p>
 
           </div>
 
@@ -62,58 +61,62 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
             </div>
             <div class="bg-white property-body border-bottom border-left border-right" style="font-size: large;">
 
+            <!-- Go to www.addthis.com/dashboard to customize your tools --> 
+            <div class="addthis_inline_share_toolbox"></div> <hr>
           <span class="property-location d-block mb-3">
             <span class="property-specs icon flaticon-location"> location</span> 
             <span class="property-location d-block mb-3"><span class="property-icon "></span> {{object.location}}</span> 
-          
-            {% if  request.user.userphone.phonenumber %}
-            <strong class="property-price"> Phone:   {{ request.user.userphone.phonenumber}}</strong>
-              {% else %}
-              <strong class="property-price text-primary mb-3 d-block text-success"> Phone:  no phone </strong>
 
-            {% endif %}
+            <div class="card" style="background: whitesmoke;">
+              <div class="card-body">
 
               <div class="row mb-5">
-              
+              <!-- info start -->
                {% if object.sale_type  %}
-               <div class="offer-type-wrap">
-                <span class="property-specs">For </span>
+               <div class="">
+                <span class="">For </span>
 
-                <span class="offer-type bg-danger text-capitalize"><h4 style="color: red;">{{object.sale_type}}</h4></span>
+                <span class=""><h4>{{object.sale_type}}</h4></span>
+                <br>
               </div>
                {% endif %}
                <div class="col-md-6">
-                <strong class="text-success h1 mb-3"> GH₵: {{object.price|intcomma}}</strong>
+                <strong class=""> GH₵: {{object.price|intcomma}}</strong>
               </div>
                {% if object.bath  or object.bed or object.name %}
               
               
-             <div class="col-md-6">
-              <ul class="property-specs-wrap mb-3 mb-lg-0  float-lg-right">
-              <li>
-                <span class="property-specs">Beds</span>
-                <span class="property-specs-number">{{object.bed}} <sup>+</sup></span>
-                
-              </li>
-              <li>
-                <span class="property-specs">Baths</span>
-                <span class="property-specs-number">{{object.bath}}</span>
-                
-              </li>
+             <div class="col-md-6" style="background:#F4F4F4;">
+            
+                 
+                   <div class="card-text">
+                   <div class="float-left">
+                    <span class="icon-bed">Beds</span>
+                    <span class="">{{object.bed}}</span>
+                   </div>
+                    
+                   <div class="float-right">
+                    <span class="icon-bath">Baths</span>
+                    <span class="">{{object.bath}}</span>
+                   </div>
+                    
+                    <span class="icon-size">SQ FT</span>
+                    <span class="">{{object.sqrt}}</span>
+                   </div>
+                 </div>
+               </div>
+            
+            
+             
            
-              <li>
-                <span class="property-specs">SQ FT</span>
-                <span class="property-specs-number">{{object.sqrt}}</span>
-                
-              </li>
-
+            
              
             <!-- <span class="property-specs icon flaticon-location"> location</span>
             <span class="property-location d-block mb-3"><span class="property-icon "></span> {{object.location}}</span> <br> -->
           
 
-            <span class="property-specs">Type</span>
-            <span class="d-inline-block text-black mb-0 caption-text">{{object.name}}</span>
+            <span class="">Type:</span>
+            <span class=""> {{object.name}}</span>
          
             </ul>
             </div>
@@ -123,17 +126,29 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
                {% endif %}
                
               </div>
-             {% if object.description %}
-             <h2 class="h4 text-black">More Info</h2>
-             <p>{{object.description}}</p>
-             {% endif %}
-             {% if object.created_by %}
-             <strong class="property-price text-muted mb-3 d-block text-success"> 
-              
-               by: {{object.created_by }} <a href="tel:+233240699506"></a></strong>
+              <hr>
+             <div >
+              {% if object.description %}
+
+              <h2 class="h4 text-black">More Info</h2>
+              <p>{{object.description}}</p>
+              {% endif %}
+              {% if object.created_by %}
+              <small class="property-price text-muted mb-3 d-block text-success"> 
+               
+               {% if object.user_phone %}
+               by: {{object.created_by }} <br> <div class="icon-phone" href="#"> {{object.user_phone}} </div>
+                <br>
+               <a class="icon-gmail" title="{{ object.created_by.email}}" href="mailto:{{ object.created_by.email}}"><p class="icon-email">email:  {{ object.created_by.email}}</p></a>
+              </small>
  
                {% endif %}
-
+ 
+ 
+  
+                {% endif %}
+             </div>
+<!-- info end -->
         
               <div class="row no-gutters mt-5">
                 <div class="col-12">
@@ -230,7 +245,7 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
               </a>
               <div class="p-4 property-body">
               
-                <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
+                <!-- <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a> -->
 
                 {% if related_properties.name or related_properties.bed or related_properties.bath %}
 
@@ -275,7 +290,7 @@ GH₵:  {{object.price}}  {% endif %}</strong></p>
           <span class="property-location d-block mb-3"><span class="property-icon"></span>{{related_properties.location}}</span> <br>
 
                 </ul>
-                <strong class="property-price text-muted mb-3 d-block text-success">by: {{related_properties.created_by }} <a href="tel:+233240699506"></a></strong>
+                <!-- <strong class="property-price text-muted mb-3 d-block text-success">by: {{related_properties.created_by }} <a href="tel:+233240699506"></a></strong> -->
 
 
               </div>

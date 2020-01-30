@@ -202,16 +202,17 @@ data-stellar-background-ratio="0.5">
           
             <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
 
+            {% if properties.price %}
+            <strong class="property-price text-primary mb-3 d-block text-success">GH₵: {{properties.price|intcomma }}</strong>
+
+            {% endif %}
+
             {% if properties.name or properties.bed or properties.bath %}
               
            
             <span class="property-specs">Type </span>
             
             <span class="property-title"><a href="{{properties.get_absolute_url}}">{{ properties.name }}</a></span>
-
-        
-            <strong class="property-price text-primary mb-3 d-block text-success">GH₵: {{properties.price }}</strong>
-            
 
           
             <ul class="property-specs-wrap mb-3 mb-lg-0">

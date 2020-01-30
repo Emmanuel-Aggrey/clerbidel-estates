@@ -17,7 +17,7 @@ class AddlandForm(forms.ModelForm):
 
         model = Property
         fields = ['property_type','price','location','description',
-        'sqrt','sale_type','image','image1','image2','image3',
+        'sqrt','sale_type','name','image','image1','image2','image3',
         'image4','image5']
 
 class AddhouseForm(forms.ModelForm):

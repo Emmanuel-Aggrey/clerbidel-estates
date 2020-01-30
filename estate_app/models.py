@@ -48,8 +48,11 @@ class Property(Basemodel):
     image3 = models.FileField(upload_to='uploads/%Y/%m/%d/',blank=True, null=True)
     image4 = models.FileField(upload_to='uploads/%Y/%m/%d/',blank=True, null=True)
     image5 = models.FileField(upload_to='uploads/%Y/%m/%d/',blank=True, null=True)
-
+    # work on this two duplicate
+    # have fixed it but have to safe phone number befor a user is allowed to upload a property in views.py
+    # for now duplicates
     created_by = models.ForeignKey(User, on_delete=models.CASCADE,blank=True, null=True)
+    user_phone = models.CharField(max_length=15,blank=True, null=True)
  
     
     def __str__(self):
