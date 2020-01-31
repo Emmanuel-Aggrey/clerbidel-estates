@@ -48,10 +48,18 @@ class Property(Basemodel):
     image3 = models.FileField(upload_to='uploads/%Y/%m/%d/',blank=True, null=True)
     image4 = models.FileField(upload_to='uploads/%Y/%m/%d/',blank=True, null=True)
     image5 = models.FileField(upload_to='uploads/%Y/%m/%d/',blank=True, null=True)
-
+    # work on this two duplicate
+    # have fixed it but have to safe phone number befor a user is allowed to upload a property in views.py
+    # for now duplicates
     created_by = models.ForeignKey(User, on_delete=models.CASCADE,blank=True, null=True)
+<<<<<<< HEAD
 
 
+=======
+    user_phone = models.CharField(max_length=15,blank=True, null=True)
+ 
+    
+>>>>>>> cecbcc0aadf69c6bbba0fb1eb4d2cf4ca8113de0
     def __str__(self):
         return '{} {}'.format(self.name,str(self.property_type))
 
@@ -90,8 +98,13 @@ class Agent(Basemodel):
         ordering  =['-date_updated']
 
 class Phone(models.Model):
-    phonenumber = models.OneToOneField(User,on_delete=models.CASCADE)
+    user = models.OneToOneField(User,on_delete=models.CASCADE,related_name='userphone')
+    phonenumber =models.CharField(max_length=15,blank=True, null=True)
+
+    def __str__(self):
+        return str(self.user)
+
 
 class Gallary(models.Model):
-    name = models.TextField(blank=True, null=True)
+    name = models.TextField('about',blank=True, null=True,help_text='enter something about this image')
     image = models.FileField(upload_to='gallary/%Y/%m/%d/')

@@ -11,17 +11,17 @@ class PhoneForm(forms.ModelForm):
         fields = '__all__'
 
 class AddlandForm(forms.ModelForm):
-    description = forms.Textarea(attrs={'cols':1,'rows':2,'placeholder':'enter description about the property'})
+    description = forms.Textarea(attrs={'cols':2,'rows':2,'placeholder':'enter description about the property'})
     image = forms.ImageField(required=True)
     class Meta:
 
         model = Property
         fields = ['property_type','price','location','description',
-        'sqrt','sale_type','image','image1','image2','image3',
+        'sqrt','sale_type','name','image','image1','image2','image3',
         'image4','image5']
 
 class AddhouseForm(forms.ModelForm):
-    description = forms.Textarea(attrs={'cols':1,'rows':2,'placeholder':'enter description about the property'})
+    description = forms.Textarea(attrs={'cols':2,'rows':2,'placeholder':'enter description about the property'})
     class Meta:
 
         model = Property

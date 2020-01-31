@@ -14,243 +14,267 @@ clerbibel &mdash; homepage
 {% block body %}
 
 <div class="container-fluid">
-  
 
-<div class="slide-one-item home-slider owl-carousel">
-  
-{% for gallaries in gallary %}
-  
 
-{% if gallaries.image %}
-  
-<div class="site-blocks-cover overlay" style="background-image: url({{ gallaries.image.url }});" data-aos="fade"
-data-stellar-background-ratio="0.5">
-{% else %}
+  <div class="slide-one-item home-slider owl-carousel">
 
-<div class="site-blocks-cover overlay" style="background-image: url({% static "images/IMG-20191231-WA0009.jpg" %}
-);" data-aos="fade"
-data-stellar-background-ratio="0.5">
-{% endif %}
-    <div class="container">
+    {% for gallaries in gallary %}
 
-      <div class="row align-items-center justify-content-center text-center">
-        <div class="col-md-10">
-          <span
-            class="d-inline-block bg-success text-white px-3 mb-3 rounded"></span>{% if gallaries.name %}
-            {{gallaries.name}}
-            {% endif %}</span>
-          <!-- <h1 class="mb-2">871 Crenshaw Blvd</h1> -->
-         
 
-         
-        </div>
-      </div>
-    </div>
-  </div>
+    {% if gallaries.image %}
 
-  
-  {% endfor %}
-</div>
-<!-- search section -->
-<div class="site-section site-section-sm pb-0">
-  <div class="container">
-    <div class="row">
-      <form class="form-search col-md-12" style="margin-top: -100px;" method="GET">
-        <div class="row  align-items-end">
-          <div class="col-md-3">
-            <label for="list-types">Listing Types</label>
-            <div class="select-wrap">
-              <span class="icon icon-arrow_drop_down"></span>
-              <select name="p_type" id="list-types" class="form-control d-block rounded-0" name="see">
-                {% for p_type in p_type %}
-                  
-                <option value="{{p_type}}">{{p_type}}</option>
+    <div class="site-blocks-cover overlay" style="background-image: url({{ gallaries.image.url }});" data-aos="fade"
+      data-stellar-background-ratio="0.5">
+      {% else %}
 
-                
-                {% endfor %}
+      <div class="site-blocks-cover overlay" style="background-image: url({% static "images/IMG-20191231-WA0009.jpg" %}
+);" data-aos="fade" data-stellar-background-ratio="0.5">
+        {% endif %}
+        <div class="container">
 
-              </select>
+          <div class="row align-items-center justify-content-center text-center">
+            <div class="col-md-10">
+              <span class="d-inline-block bg-success text-white px-3 mb-3 rounded"></span>{% if gallaries.name %}
+              {{gallaries.name}}
+              {% else %}
+              <div>
+                <style>
+                  #infopage {
+                    opacity: 0;
+                    filter: alpha(opacity=30);
+                    /* For IE8 and earlier */
+                  }
+                </style>
+                <div class="card " id="infopage">
+                  <h4> Welcome To Clerbibel Estates!</h4>
+                  <h3>
+                    The number one leading real estate developer in Ghana, offering a variety of properties ranging from
+                    affordable apartments to high-end homes.
+                    and Lands
+                  </h3>
+                </div>
+              </div>
+              {% endif %}</span>
+              <!-- <h1 class="mb-2">871 Crenshaw Blvd</h1> -->
+
+
+
             </div>
           </div>
-          <div class="col-md-3">
-            <label for="offer-types">Offer Type</label>
-            <div class="select-wrap">
-              <span class="icon icon-arrow_drop_down"></span>
-              <select name="sale_type" id="list-types" class="form-control d-block rounded-0" name="see">
-                <option value="sale or rent">sale or rent</option>  
-                <option value="rent">rent</option>
-                <option value="sale">sale</option>
-              
-            
-              </select>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <label for="select-city">Select City</label>
-            <div class="select-wrap">
-              <span class="icon icon-arrow_drop_down"></span>
-              <select name="location" id="list-types" class="form-control d-block rounded-0" name="see">
-                {% for locations in location %}
-                  
-                <option value="{{locations}}">{{locations}}</option>
-
-                
-                {% endfor %}
-
-              </select>
-            </div>
-          </div>
-          <div class="col-md-3 "> <br>
-            <input type="submit" class="btn btn-success text-white btn-block rounded-0" value="Search">
-          </div>
-        </div>
-      </form>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        <div class="view-options bg-white py-3 px-3 d-md-flex align-items-center">
-          <div class="mr-auto">
-            
-
-          </div>
-        
         </div>
       </div>
-    </div>
-
-  </div>
-</div>
-<!--LOCATION  -->
 
 
-<div class="site-section">
-  <div class="container">
- 
-    <div class="row justify-content-center">
-      <h5 style="background-color: dimgray; font-style: italic; margin-top: 0px;" class="text-white" id="example"></h5> <br>
-
-      <div class="col-md-8 text-center">
-        <div class="site-section-title">
-        </div>
-
-        <p class=""><h2 class="text-center">We have registerd lands located in these areas</h2></p>
-      </div>
-    </div>
-<!-- Button trigger modal -->
-<h4>
-  <h4>  Shai-Hills,  Asutuary, Dawhenya(Central University),  Prampram,</h4>
-  <h4>  Tema Comm 25 Extension,  Tsopoli,  Ada (Matse Kope),  Ho</h4>
- </h4>
-<button type="button" class="btn btn-link" data-toggle="modal" data-target="#modelId">
-<h5 class="view_all">view all</h5>
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Our land Locations</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-      </div>
-      <div class="modal-body">
-        {% for  locations in location %}
-        <span class="icon flaticon-location"></span>   
-
-       <div class="row">
-        <div class="col-md-4 col-lg-4 col-sm-6 col-xs-4">
-        <h4>  {{locations}}</h4>
-        </div>
-       </div>
-        {% endfor %}
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-   
-  </div>
-</div>
-<!-- END LOCATION  -->
-<div class="site-section site-section-sm bg-light">
-  <div class="container">
-
-    <div class="row mb-5">
-      {% for  properties in properties %}
-      <div class="col-md-6 col-lg-4 mb-4" style="margin-bottom: 10px;">
-      
-          
-       
-        <div class="property-entry h-100">
-          <a href="{{properties.get_absolute_url}}" class="property-thumbnail">
-            <div class="offer-type-wrap">
-              <span class="offer-type bg-danger">{{properties.sale_type}}</span>
-            </div>
-            {% if properties.image %}
-            <img src="{{properties.image.url}}" alt="Image" class="img-fluid" height="250">
-
-          </a>
-        
-          <div class="p-4 property-body">
-          
-            <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
-
-            {% if properties.name or properties.bed or properties.bath %}
-              
-           
-            <span class="property-specs">Type </span>
-            
-            <span class="property-title"><a href="{{properties.get_absolute_url}}">{{ properties.name }}</a></span>
-
-        
-            <strong class="property-price text-primary mb-3 d-block text-success">GH₵: {{properties.price }}</strong>
-            
-
-          
-            <ul class="property-specs-wrap mb-3 mb-lg-0">
-             
-              <li>
-                <span class="property-specs">Beds</span>
-                <span class="property-specs-number">{{properties.bed }} <sup>+</sup></span>
-
-              </li>
-            
-              <li>
-                <span class="property-specs">Baths</span>
-                <span class="property-specs-number">{{properties.bath }}</span>
-
-              </li>
-              {% endif %}
-              <li>
-                <span class="property-specs">SQ FT</span>
-                <span class="property-specs-number">{{properties.sqrt }}</span>
-
-              </li>
-
-
-            <span class="property-specs icon-map "> location</span>
-            <span class="property-location d-block mb-3"><span class="property-icon"></span>{{properties.location}}</span> <br>
-
-             
-            </ul>
-
-            {% endif %}
-          </div>
-        </div>
-        
-      </div>
       {% endfor %}
-  
-      <!-- form was here -->
     </div>
-    <!-- start paginate -->
-    <!-- <div class="row">
+    <!-- search section -->
+    <div class="site-section site-section-sm pb-0">
+      <div class="container">
+        <div class="row">
+          <form class="form-search col-md-12" style="margin-top: -100px;" method="GET">
+            <div class="row  align-items-end">
+              <div class="col-md-3">
+                <label for="list-types">Listing Types</label>
+                <div class="select-wrap">
+                  <span class="icon icon-arrow_drop_down"></span>
+                  <select name="p_type" id="list-types" class="form-control d-block rounded-0" name="see">
+                    {% for p_type in p_type %}
+
+                    <option value="{{p_type}}">{{p_type}}</option>
+
+
+                    {% endfor %}
+
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label for="offer-types">Offer Type</label>
+                <div class="select-wrap">
+                  <span class="icon icon-arrow_drop_down"></span>
+                  <select name="sale_type" id="list-types" class="form-control d-block rounded-0" name="see">
+                    <option value="sale or rent">sale or rent</option>
+                    <option value="rent">rent</option>
+                    <option value="sale">sale</option>
+
+
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label for="select-city">Select City</label>
+                <div class="select-wrap">
+                  <span class="icon icon-arrow_drop_down"></span>
+                  <select name="location" id="list-types" class="form-control d-block rounded-0" name="see">
+                    {% for locations in location %}
+
+                    <option value="{{locations}}">{{locations}}</option>
+
+
+                    {% endfor %}
+
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3 "> <br>
+                <input type="submit" class="btn btn-success text-white btn-block rounded-0" value="Search">
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="view-options bg-white py-3 px-3 d-md-flex align-items-center">
+              <div class="mr-auto">
+
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!--LOCATION  -->
+
+    <h5 style="background-color: dimgray; font-style: italic; margin-top: 0px; float:right;" class="text-white"
+      id="example"></h5> <br>
+
+    <div class="site-section">
+
+      <div class="container">
+
+        <div class="row justify-content-center">
+
+          <div class="col-md-8 text-center">
+            <div class="site-section-title">
+            </div>
+
+            <p class="">
+              <h2 class="text-center">We have registerd lands located in these areas</h2>
+            </p>
+          </div>
+        </div>
+        <!-- Button trigger modal -->
+        <h4>
+          <h4> Shai-Hills, Asutuary, Dawhenya(Central University), Prampram,</h4>
+          <h4> Tema Comm 25 Extension, Tsopoli, Ada (Matse Kope), Ho</h4>
+        </h4>
+        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modelId">
+          <h5 class="view_all">view all</h5>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Our land Locations</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                {% for  locations in location %}
+                <span class="icon flaticon-location"></span>
+
+                <div class="row">
+                  <div class="col-md-4 col-lg-4 col-sm-6 col-xs-4">
+                    <h4> {{locations}}</h4>
+                  </div>
+                </div>
+                {% endfor %}
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- END LOCATION  -->
+    <div class="site-section site-section-sm bg-light">
+      <div class="container">
+
+        <div class="row mb-5">
+          {% for  properties in properties %}
+          <div class="col-md-6 col-lg-4 mb-4" style="margin-bottom: 10px;">
+
+
+
+            <div class="property-entry h-100">
+              <a href="{{properties.get_absolute_url}}" class="property-thumbnail">
+                <div class="offer-type-wrap">
+                  <span class="offer-type bg-danger">{{properties.sale_type}}</span>
+                </div>
+                {% if properties.image %}
+                <img src="{{properties.image.url}}" alt="Image" class="img-fluid" height="250">
+
+              </a>
+
+              <div class="p-4 property-body">
+
+                <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
+
+                {% if properties.price %}
+                <strong class="property-price text-primary mb-3 d-block text-success">GH₵:
+                  {{properties.price|intcomma }}</strong>
+
+                {% endif %}
+
+                {% if properties.name or properties.bed or properties.bath %}
+
+
+                <span class="property-specs">Type </span>
+
+                <span class="property-title"><a href="{{properties.get_absolute_url}}">{{ properties.name }}</a></span>
+
+
+                <ul class="property-specs-wrap mb-3 mb-lg-0">
+
+                  <li>
+                    <span class="property-specs">Beds</span>
+                    <span class="property-specs-number">{{properties.bed }} <sup>+</sup></span>
+
+                  </li>
+
+                  <li>
+                    <span class="property-specs">Baths</span>
+                    <span class="property-specs-number">{{properties.bath }}</span>
+
+                  </li>
+                  {% endif %}
+                  <li>
+                    <span class="property-specs">SQ FT</span>
+                    <span class="property-specs-number">{{properties.sqrt }}</span>
+
+                  </li>
+
+
+                  <span class="property-specs icon-map "> location</span>
+                  <span class="property-location d-block mb-3"><span
+                      class="property-icon"></span>{{properties.location}}</span> <br>
+
+
+                </ul>
+
+                {% endif %}
+              </div>
+            </div>
+
+          </div>
+          {% endfor %}
+
+          <!-- form was here -->
+        </div>
+        <!-- start paginate -->
+        <!-- <div class="row">
       <div class="col-md-12 text-center">
         <div class="site-pagination">
           <a href="#" class="active">1</a>
@@ -263,117 +287,119 @@ data-stellar-background-ratio="0.5">
         </div>
       </div>
     </div> -->
-<!-- end paginate -->
-  </div>
-</div>
-<!-- LOCATION -->
-<!-- END LOCATION -->
-<div class="site-section" style="background: rgb(48, 48, 78);">
-  <section class="newslatter-section">
-    <div class="container">
-        <div class="row">
+        <!-- end paginate -->
+      </div>
+    </div>
+    <!-- LOCATION -->
+    <!-- END LOCATION -->
+    <div class="site-section" style="background: rgb(48, 48, 78);">
+      <section class="newslatter-section">
+        <div class="container">
+          <div class="row">
             <div class="col-lg-12 text-center">
-                <div class="newslatter-text">
-                    <img src="{% static "images/message.png" %}" alt="">
-                    <h4 class="text-white" style="color: white;">you can chat with us by using our chat bot at the far right bottom <br>#CLERBIDEL ESTATES</h4>
-                    <!-- <form>
+              <div class="newslatter-text">
+                <img src="{% static "images/message.png" %}" alt="">
+                <h4 class="text-white" style="color: white;">you can chat with us by using our chat bot at the far right
+                  bottom <br>#CLERBIDEL ESTATES</h4>
+                <!-- <form>
                         <input type="text" placeholder="Email address">
                         <button type="submit" class="site-btn news-btn">Subscribe!</button>
                     </form> -->
-                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </section>
     </div>
-</section>
-</div>
 
-  <!-- Call to Action -->
-  <br>
-	<div class="cta_1 ">
+    <!-- Call to Action -->
+    <br>
+    <div class="cta_1 ">
 
-		<div class="cta_1_background" style="background-image:url()"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					
-					<div class="cta_1_content d-flex flex-lg-row flex-column align-items-center justify-content-start">
-						<h3 class="cta_1_text text-lg-left text-center">Do you want to talk with one of our <span>real estate experts?</span></h3>
-            <div class="cta_1_phone">Call now: <a href="tel:+233244153064 ">+233244153064</a></div> 
-            <!-- <div class="cta_1_phone" style="color:rgb(31, 60, 136);">Call now: <a href="tel:+233244153064 ">+233244153064</a> </div> -->
+      <div class="cta_1_background" style="background-image:url()"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col">
 
-					</div>
+            <div class="cta_1_content d-flex flex-lg-row flex-column align-items-center justify-content-start">
+              <h3 class="cta_1_text text-lg-left text-center">Do you want to talk with one of our <span>real estate
+                  experts?</span></h3>
+              <div class="cta_1_phone">Call now: <a href="tel:+233244153064 ">+233244153064</a></div>
+              <!-- <div class="cta_1_phone" style="color:rgb(31, 60, 136);">Call now: <a href="tel:+233244153064 ">+233244153064</a> </div> -->
 
-        </div>
-        
-			</div>
-    </div> <br><br><hr>
-    <p ><span class="property-specs text-center icon-download "><a class="download btn" style="font-size: xx-large;" title="download our registration form" href="{% static "doc/CLERBIDEL ESTATES.pdf" %}" target="_blank" rel="noopener noreferrer"> download our form</a></span></p
-    </div> 
-  </div>
-  <style>
-  .download:hover{
-   font-weight: bolder;
-   margin-top: 20px;
-  }
-  .view_all:hover{
-    font-weight: bolder;
-  
-  }
-  </style>
-<!-- end Action -->
-
-<div class="site-section">
-  <div class="container">
-    <div class="row mb-5 justify-content-center">
-      <div class="col-md-7">
-        <div class="site-section-title text-center">
-          <h2>Our Directors</h2>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      {% for agent in agents %}
-        
-   
-        <div class="col-md-6 col-lg-4 mb-5 mb-lg-5">
-
-          <div class="team-member">
-
-            <img src="{{agent.image.url}}" alt="Image" class="img-fluid rounded mb-4" height="350" width="auto">
-
-            <div class="text">
-
-              <h2 class="mb-2 font-weight-light text-black h4">{{agent.name}}</h2>
-              <span class="d-block mb-3 text-white-opacity-05">{{agent.position}}</span>
-              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi dolorem totam non quis facere blanditiis praesentium est. Totam atque corporis nisi, veniam non. Tempore cupiditate, vitae minus obcaecati provident beatae!</p> -->
-              <p>
-                {% if  agent.facebook_url  %}
-                
-                <a href="{{agent.facebook_url}}" class="text-black p-2"><span class="icon-facebook"></span></a>
-              
-                {% endif %}
-
-                {% if agent.twitter_url %}
-                <a href="{{agent.twitter_url}}" class="text-black p-2"><span class="icon-twitter"></span></a>
-
-                {% endif %}
-                {% if agent.linkedin_url  %}
-                <a href="{{agent.linkedin_url}}" class="text-black p-2"><span class="icon-linkedin"></span></a>
-
-                {% endif %}
-              </p>
             </div>
 
           </div>
+
         </div>
-        
-        {% endfor %}
+      </div> <br><br>
+      <hr>
+      <p><span class="property-specs text-center icon-download "><a class="download btn" style="font-size: xx-large;"
+            title="download our registration form" href="{% static "doc/CLERBIDEL ESTATES.pdf" %}" target="_blank"
+            rel="noopener noreferrer"> download our form</a></span></p </div> </div> <style>
+      .download:hover{
+      font-weight: bolder;
+      margin-top: 20px;
+      }
+      .view_all:hover{
+      font-weight: bolder;
+
+      }
+      </style>
+      <!-- end Action -->
+
+      <div class="site-section">
+        <div class="container">
+          <div class="row mb-5 justify-content-center">
+            <div class="col-md-7">
+              <div class="site-section-title text-center">
+                <h2>Our Directors</h2>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            {% for agent in agents %}
+
+
+            <div class="col-md-6 col-lg-4 mb-5 mb-lg-5">
+
+              <div class="team-member">
+
+                <img src="{{agent.image.url}}" alt="Image" class="img-fluid rounded mb-4" height="350" width="auto">
+
+                <div class="text">
+
+                  <h2 class="mb-2 font-weight-light text-black h4">{{agent.name}}</h2>
+                  <span class="d-block mb-3 text-white-opacity-05">{{agent.position}}</span>
+                  <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi dolorem totam non quis facere blanditiis praesentium est. Totam atque corporis nisi, veniam non. Tempore cupiditate, vitae minus obcaecati provident beatae!</p> -->
+                  <p>
+                    {% if  agent.facebook_url  %}
+
+                    <a href="{{agent.facebook_url}}" class="text-black p-2"><span class="icon-facebook"></span></a>
+
+                    {% endif %}
+
+                    {% if agent.twitter_url %}
+                    <a href="{{agent.twitter_url}}" class="text-black p-2"><span class="icon-twitter"></span></a>
+
+                    {% endif %}
+                    {% if agent.linkedin_url  %}
+                    <a href="{{agent.linkedin_url}}" class="text-black p-2"><span class="icon-linkedin"></span></a>
+
+                    {% endif %}
+                  </p>
+                </div>
+
+              </div>
+            </div>
+
+            {% endfor %}
+          </div>
+        </div>
       </div>
-  </div>
-</div>
 
-<link rel="stylesheet" href="{% static "css/news_letter.css" %}">
+      <link rel="stylesheet" href="{% static "css/news_letter.css" %}">
 
 
-</div>
-{% endblock body  %}
+    </div>
+    {% endblock body  %}

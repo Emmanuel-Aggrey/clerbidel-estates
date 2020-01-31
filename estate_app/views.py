@@ -4,10 +4,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from  django.views.generic import  TemplateView,DetailView,ListView
 from django.urls import reverse_lazy
+from  rest_framework import generics
+from .serializers import Phoneserializer
 from  django.views.generic.edit import  CreateView,DeleteView,UpdateView
-from .models import Propertytype,Property,Agent,Gallary
+from .models import Propertytype,Property,Agent,Gallary,Phone
 from .forms import AddlandForm,AddhouseForm,PhoneForm
 from  django.db.models import  Q
+
 # Create your views here.
 
 
@@ -22,7 +25,7 @@ def homeview(request):
     agents = Agent.objects.filter(available=True)
     p_type = property_.values_list('property_type__name',flat=True).distinct()
     # sale_type = property_.values('sale_type',flat=True).distinct()
-    location = property_.values_list('location',flat=True).distinct().exclude(property_type__name='BUILDING')
+    location = property_.values_list('location',flat=True).distinct()#.exclude(property_type__name='BUILDING')
 
 
     query = request.GET.get('p_type')
@@ -67,6 +70,7 @@ def propertydetalview(request,id):
     context = {
         'object':property_,
         'related':related_properties,
+        # 'userphone':Phone.objects.filter(user=property_.created_by)
 
     }
     return render(request,'estate_app/property-details.html',context)
@@ -100,7 +104,9 @@ class Addlandview(LoginRequiredMixin,CreateView,ListView):
     success_url = reverse_lazy('estate_app:addland')
 
     def form_valid(self, form):
-        form.instance.created_by = self.request.user        
+        form.instance.created_by = self.request.user   
+        form.instance.user_phone = self.request.user.userphone.phonenumber   
+ 
         return super().form_valid(form)
     
     def get_queryset(self):
@@ -157,3 +163,15 @@ def deletehome(request,id):
         property_.delete()
         
         return redirect('estate_app:addhome')
+
+
+class Addphoneview(generics.CreateAPIView):
+    serializer_class = Phoneserializer
+    def post(self,request):
+        return self.create(request)
+    
+    def perform_create(self,serializer):
+        serializer.save(user=self.request.user)
+
+class UserphoneExistview(generics.ListAPIView):
+    pass
