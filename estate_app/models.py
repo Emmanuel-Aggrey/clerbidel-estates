@@ -52,14 +52,9 @@ class Property(Basemodel):
     # have fixed it but have to safe phone number befor a user is allowed to upload a property in views.py
     # for now duplicates
     created_by = models.ForeignKey(User, on_delete=models.CASCADE,blank=True, null=True)
-<<<<<<< HEAD
-
-
-=======
     user_phone = models.CharField(max_length=15,blank=True, null=True)
  
     
->>>>>>> cecbcc0aadf69c6bbba0fb1eb4d2cf4ca8113de0
     def __str__(self):
         return '{} {}'.format(self.name,str(self.property_type))
 
