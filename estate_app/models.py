@@ -21,8 +21,8 @@ class Propertytype(Basemodel):
 
     def __str__(self):
         return self.name
-    
-       
+
+
 class Property(Basemodel):
     property_type = models.ForeignKey(Propertytype,on_delete=models.CASCADE,related_name='properties')
     name = models.CharField(max_length=200,blank=True, null=True,help_text='eg single room,story building')
@@ -41,7 +41,7 @@ class Property(Basemodel):
     )
     sale_type = models.CharField(max_length=20,choices=sale_type,blank=True, null=True,default='sale')
     available = models.BooleanField(default=True)
-    
+
     image = models.FileField(upload_to='uploads/%Y/%m/%d/',blank=True, null=True)
     image1 = models.FileField(upload_to='uploads/%Y/%m/%d/',blank=True, null=True)
     image2 = models.FileField(upload_to='uploads/%Y/%m/%d/',blank=True, null=True)
@@ -50,17 +50,17 @@ class Property(Basemodel):
     image5 = models.FileField(upload_to='uploads/%Y/%m/%d/',blank=True, null=True)
 
     created_by = models.ForeignKey(User, on_delete=models.CASCADE,blank=True, null=True)
- 
-    
+
+
     def __str__(self):
         return '{} {}'.format(self.name,str(self.property_type))
 
     def get_absolute_url(self):
-       
+
         return reverse('estate_app:detailpage', args=[self.id])
 
     def delete(self, *args, **kwargs):
-       
+
         if self.image or  self.image1 or self.image2 or self.image3 or self.image4 or self.image5:
             self.image1.delete()
             self.image2.delete()
@@ -68,17 +68,17 @@ class Property(Basemodel):
             self.image4.delete()
             self.image5.delete()
         super().delete(*args, **kwargs)
-        
 
 
-    
+
+
 class Agent(Basemodel):
     name = models.CharField(max_length=200)
     image = models.FileField(upload_to='profiles/%Y/%m/%d/',blank=True, null=True)
     position = models.CharField(max_length=200,blank=True, null=True)
     facebook_url = models.URLField(blank=True, null=True)
     linkedin_url = models.URLField(blank=True, null=True)
-    twitter_url  = models.URLField(blank=True, null=True)  
+    twitter_url  = models.URLField(blank=True, null=True)
     available = models.BooleanField(default=True)
 
     def __str__(self):
