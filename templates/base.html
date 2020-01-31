@@ -24,10 +24,10 @@
 
       {% if messages %}
       <div>
-        <strong>Messages:</strong>
+        <strong class="message">Messages:</strong>
         <ul>
     {% for message in messages %}
-    <li>{{message}}</li>
+    <li class="message">{{message}}</li>
     {% endfor %}
         </ul>
       </div>
@@ -56,5 +56,10 @@
       {% endblock %}
     </div>
   </div>
+  <script>
+  
+  $('.message').fadeOut(5000).css('color','red')
+  </script>
+
   </body>
 </html>
