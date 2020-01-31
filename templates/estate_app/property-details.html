@@ -4,7 +4,7 @@
   {% block title %}
   clerbibel &mdash;  {{object.location}}- {% if object.name %}
  {{ object.name }}
- <img src='{{object.image1.url}}' id='my_img'>
+ {{object.image1.url}}
   {% endif %}
   {% endblock title %}
 
@@ -306,7 +306,4 @@ GH₵:  {{object.price|intcomma}}  {% endif %}</strong></p>
         </div>
       </div>
 
-      <script>
-      $('#my_img').attr('src');
-      </script>
 {% endblock body %}
