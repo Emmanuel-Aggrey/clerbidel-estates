@@ -4,6 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from  django.views.generic import  TemplateView,DetailView,ListView
 from django.urls import reverse_lazy
+from django.http import Http404
 from  rest_framework import generics
 from .serializers import Phoneserializer
 from  django.views.generic.edit import  CreateView,DeleteView,UpdateView
@@ -175,3 +176,14 @@ class Addphoneview(generics.CreateAPIView):
 
 class UserphoneExistview(generics.ListAPIView):
     pass
+
+
+
+def error_404(request,error_404):
+    data = {}
+    return render(request, 'errors/error_404.html', data)
+
+
+def error_500(request):
+    data = {}
+    return render(request, 'errors/error_500.html', data)
