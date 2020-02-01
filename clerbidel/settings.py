@@ -29,7 +29,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','192.168.43.212 ','clerbidelestates.com']
+ALLOWED_HOSTS = ['127.0.0.1','192.168.43.212 ','www.clerbidelestates.com']
 
 
 
