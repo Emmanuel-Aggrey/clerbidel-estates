@@ -178,11 +178,9 @@ class UserphoneExistview(generics.ListAPIView):
     pass
 
 
-
 def error_404(request,error_404):
     data = {}
     return render(request, 'errors/error_404.html', data)
-
 
 def error_500(request):
     data = {}
