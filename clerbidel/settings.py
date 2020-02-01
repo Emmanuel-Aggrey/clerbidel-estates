@@ -27,17 +27,17 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = config('DEBUG',cast=bool)
 
-DEBUG = False
+# DEBUG = False
 
-if DEBUG is False:
-    ALLOWED_HOSTS = [
-        'clerbidelestates',
-    ]
+# if DEBUG is False:
+#     ALLOWED_HOSTS = [
+#         'clerbidelestates',
+#     ]
 
-if DEBUG is True:
-    ALLOWED_HOSTS = ['127.0.0.1','192.168.43.212 ']
+# if DEBUG is True:
+#     ALLOWED_HOSTS = ['127.0.0.1','192.168.43.212 ']
 
-# ALLOWED_HOSTS = ['127.0.0.1','192.168.43.212 ','clerbidelestates']
+ALLOWED_HOSTS = ['127.0.0.1','192.168.43.212 ','clerbidelestates']
 
 
 # Application definition
