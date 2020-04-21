@@ -1,1 +1,2 @@
-web: gunicorn clerbidel.wsgi --log-file -
+web: gunicorn clerbidel.wsgi:application --preload --workers 1
+
